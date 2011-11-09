@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using StatTrackr.Framework.Domain;
+using System.Web.Mvc;
+
+namespace StatTrackr.Web.Models
+{
+    public class TeamModel : Team
+    {
+       
+        public int LeagueId { get; set; }
+
+    }
+}

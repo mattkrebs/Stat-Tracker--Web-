@@ -1,0 +1,100 @@
+﻿@model StatTrackr.Web.Models.TeamLeagueModel
+<style>
+	.demo ul { list-style-type: none; margin: 0; padding: 0; margin-bottom: 10px; }
+	.demo li { margin: 5px; padding: 5px; width: 150px; }
+	</style>
+	<script type="text/javascript">
+	
+        
+	    $(function () {
+	        $('#dialog').dialog({
+	            autoopen: false,
+	            width: 600,
+	            resizable: false,
+	            title: 'Add/Remove Teams',
+	            url: "",
+	            modal: true,
+	            buttons: {
+	                "Save": function () {
+
+	                    $.ajax({
+	                        url: '/Team/Add',
+	                        type: 'POST',
+	                        traditional: true,
+	                        data: { "addIds": getArray("#sortable1"), "removeIds": getArray("#sortable2"), "leagueid": "@ViewBag.LeagueID" },
+	                        success: function () {
+	                            if ($("#dialog form").length > 0) {
+	                                $("#dialog form").submit();
+
+	                            } else {
+	                                alert("Success");
+	                                window.location.reload();
+
+	                            }
+	                        }
+	                    });
+
+	                },
+	                "Cancel": function () {
+	                    $(this).dialog("close");
+	                }
+	            }
+	        });
+
+
+	    });
+	    $(function () {
+	        $("#sortable1, #sortable2").sortable({
+	            connectWith: ".connectedSortable",
+	            stop: function (event, ui) {
+
+	            }
+	        }).disableSelection();
+	    });
+
+
+	    function getArray(div) {
+	        var list = [];
+	        $(div).find("li").each(function () {
+	            list.push($(this).attr("rel"));
+
+	        });
+	        return list;
+	    }
+	</script>
+
+
+
+<div class="relationships">
+
+@*Current Items*@
+<div class="rel-list">
+    <h4>Current Items</h4>
+<ul id="sortable1"  class="connectedSortable">
+@foreach (var item in Model.CurrentTeams)
+{
+    <li id="@item" rel="@item.TeamID" class="ui-state-default">
+        <div class="editor button editmodal" rel="/Team/Edit/@item.TeamID">Edit</div><span title="@item.TeamName">@item.TeamName</span>
+    <div class="clear"></div>
+    </li>
+}
+	
+</ul>
+</div>
+	@*Master list*@
+    <div class="rel-list">
+    <h4>All Items</h4>
+<ul id="sortable2"  class="connectedSortable">
+@foreach (var master in Model.AvailableTeams.OrderBy(x => x.TeamName))
+{
+    <li rel="@master.TeamID" class="ui-state-default">
+        <div class="editor button editmodal" rel="/Team/Edit/@master.TeamID">Edit</div><span title="@master.TeamName">@master.TeamName</span>
+    <div class="clear"></div>
+    </li>
+}
+	
+
+</ul>
+</div>
+<div class="clear"></div>
+</div>

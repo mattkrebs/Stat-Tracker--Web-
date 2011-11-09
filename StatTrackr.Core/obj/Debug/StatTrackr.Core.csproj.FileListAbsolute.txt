@@ -1,0 +1,7 @@
+D:\Personal\BasketballLeague\trunk\WebApp\StatTrackr.Core\obj\Debug\StatTrackr.Core.csprojResolveAssemblyReference.cache
+D:\Personal\BasketballLeague\trunk\WebApp\StatTrackr.Core\bin\Debug\StatTrackr.Core.dll
+D:\Personal\BasketballLeague\trunk\WebApp\StatTrackr.Core\bin\Debug\StatTrackr.Core.pdb
+D:\Personal\BasketballLeague\trunk\WebApp\StatTrackr.Core\bin\Debug\StatTrackr.Framework.dll
+D:\Personal\BasketballLeague\trunk\WebApp\StatTrackr.Core\bin\Debug\StatTrackr.Framework.pdb
+D:\Personal\BasketballLeague\trunk\WebApp\StatTrackr.Core\obj\Debug\StatTrackr.Core.dll
+D:\Personal\BasketballLeague\trunk\WebApp\StatTrackr.Core\obj\Debug\StatTrackr.Core.pdb

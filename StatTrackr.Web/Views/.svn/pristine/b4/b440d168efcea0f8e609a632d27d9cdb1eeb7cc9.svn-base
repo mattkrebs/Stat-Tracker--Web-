@@ -1,0 +1,16 @@
+﻿@model StatTrackr.Web.Models.LeagueModel
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)  
+        <div class="editor-label">
+            @Html.LabelFor(model => model.name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+}
+

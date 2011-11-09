@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>@ViewBag.Message</h2>
+<p>
+    <div>@Html.ActionLink("Create Your First Team", "Create","Team")</div>
+    @if (!StatTrackr.Framework.Security.CodeFirstSecurity.IsAuthenticated)
+    {
+    <div>@Html.ActionLink("Login To Existing Account", "Create", "Team")</div>
+    }
+</p>
