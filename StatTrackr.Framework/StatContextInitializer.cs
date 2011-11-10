@@ -17,17 +17,26 @@ namespace StatTrackr.Framework
 
             User user = context.Users.Where(x => x.UserID != Guid.Empty).FirstOrDefault();
 
-            new List<Role>{
-                new Role{ RoleName="Administrator",},
-                new Role{ RoleName="Owner"},
-                new Role{ RoleName="Edit Team"},
-                new Role{ RoleName="Edit Leauge"},
-                new Role{ RoleName="Edit Division"},
-                new Role{ RoleName="Edit Player"},
-                new Role{ RoleName="Edit Stats"}
-            }.ForEach(r => context.Roles.Add(r));
+
+
+            //new List<Role>{
+            //    new Role{ RoleName="Administrator"},
+            //    new Role{ RoleName="Owner"},
+            //    new Role{ RoleName="Edit Team"},
+            //    new Role{ RoleName="Edit Leauge"},
+            //    new Role{ RoleName="Edit Division"},
+            //    new Role{ RoleName="Edit Player"},
+            //    new Role{ RoleName="Edit Stats"}
+            //}.ForEach(r => context.Roles.Add(r));
 
             context.SaveChanges();
+
+
+            user.Owner = user;
+            user.Roles = new List<Role> { new Role { RoleName = "Administrator" } };
+            context.Entry(user).State = System.Data.EntityState.Modified;
+            context.SaveChanges();
+
 
             new List<Division>
             {
