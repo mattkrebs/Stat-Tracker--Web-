@@ -13,7 +13,7 @@ namespace StatTrackr.Framework
         protected override void Seed(StatContext context)
         {
 
-            CodeFirstSecurity.CreateAccount("krebs", "drinksonm3", "krebs44@gmail.com");
+            CodeFirstSecurity.CreateAccount("joecool", "password", "test@test.com");
 
             User user = context.Users.Where(x => x.UserID != Guid.Empty).FirstOrDefault();
 
