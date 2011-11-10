@@ -9,7 +9,7 @@ namespace StatTrackr.Core
     {
         IList<T> GetAll(Guid UserID);
 
-        T GetById(dynamic Id);
+        T GetById(int Id);
 
         void Create(T obj, Guid UserID);
 

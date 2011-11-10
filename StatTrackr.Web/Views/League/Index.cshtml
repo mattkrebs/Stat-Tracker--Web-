@@ -8,35 +8,19 @@
 
 
 <h2>My Leagues</h2> 
-<div id="accordion">
-@foreach (StatTrackr.Framework.Domain.League league in Model)
-{
-   
-	<h3><a href="#">@league.Name @Html.Raw(league.Division != null ?  "(" + league.Division.Name + ")" : "")</a></h3>
-    <div>
-    <a href="javascript:void(0);" rel="/League/Edit/@league.LeagueID" class="editor">Edit</a>
-    <table>
-        <tr>
-            <td>Team</td>
-            <td>Record</td>
-            <td>&nbsp;</td>
-        </tr>
-        @foreach (StatTrackr.Framework.Domain.Team mTeam in league.Teams)
-        {
-            <tr>
-                <td> @Html.ActionLink(mTeam.TeamName, "Index","Team" ,new { id=mTeam.TeamID}, null)</td>
-                <td>0 - 0</td>
-                <td>@Html.ActionLink("Edit", "Edit", "Team", new { id= mTeam.TeamID }, null)</td>
-            </tr>
-        }
-    </table>
-    <a href="javascript:void(0);" rel="/Team/Add/@league.LeagueID" class="editor">Add Existing Team</a><br />
-    <a href="javascript:void(0);" rel="/Team/Create/@league.LeagueID" class="editor">Create Team</a> 
-    
+<div>
+@Html.DropDownList("ddlLeague", new SelectList(StatTrackr.Web.Models.StatHelper.GetAllLeagues(), "LeagueID", "Name"))
+    <div id="teams">
+
     </div>
-}</div>
-<script>
-    $(function () {
-        $("#accordion").accordion();
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#teams").load("/team/List/" + $("#ddlLeague").val());    
     });
-	</script>
+
+    $("#ddlLeague").change(function () {
+        $("#teams").load("/team/List/" + $("#ddlLeague").val());    
+    });
+
+</script>

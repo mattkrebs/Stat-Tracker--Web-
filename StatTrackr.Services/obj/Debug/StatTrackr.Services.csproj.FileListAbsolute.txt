@@ -59,3 +59,11 @@ D:\Personal\BasketballLeague\trunk\WebApp\StatTrackr.Services\bin\StatTrackr.WCF
 D:\Personal\BasketballLeague\trunk\WebApp\StatTrackr.Services\obj\Debug\StatTrackr.Services.csprojResolveAssemblyReference.cache
 D:\Personal\BasketballLeague\trunk\WebApp\StatTrackr.Services\obj\Debug\StatTrackr.Services.dll
 D:\Personal\BasketballLeague\trunk\WebApp\StatTrackr.Services\obj\Debug\StatTrackr.Services.pdb
+D:\Personal\Stat-Tracker--Web-\StatTrackr.Services\bin\StatTrackr.Services.dll
+D:\Personal\Stat-Tracker--Web-\StatTrackr.Services\bin\StatTrackr.Services.pdb
+D:\Personal\Stat-Tracker--Web-\StatTrackr.Services\bin\Iesi.Collections.dll
+D:\Personal\Stat-Tracker--Web-\StatTrackr.Services\bin\StatTrackr.WCF.dll
+D:\Personal\Stat-Tracker--Web-\StatTrackr.Services\bin\StatTrackr.WCF.pdb
+D:\Personal\Stat-Tracker--Web-\StatTrackr.Services\obj\Debug\StatTrackr.Services.csprojResolveAssemblyReference.cache
+D:\Personal\Stat-Tracker--Web-\StatTrackr.Services\obj\Debug\StatTrackr.Services.dll
+D:\Personal\Stat-Tracker--Web-\StatTrackr.Services\obj\Debug\StatTrackr.Services.pdb

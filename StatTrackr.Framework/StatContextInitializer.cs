@@ -15,9 +15,10 @@ namespace StatTrackr.Framework
 
             CodeFirstSecurity.CreateAccount("krebs", "drinksonm3", "krebs44@gmail.com");
 
+            User user = context.Users.Where(x => x.UserID != Guid.Empty).FirstOrDefault();
 
             new List<Role>{
-                new Role{ RoleName="Administrator"},
+                new Role{ RoleName="Administrator",},
                 new Role{ RoleName="Owner"},
                 new Role{ RoleName="Edit Team"},
                 new Role{ RoleName="Edit Leauge"},
@@ -30,43 +31,41 @@ namespace StatTrackr.Framework
 
             new List<Division>
             {
-                new Division{ Name="Men's Open", DateCreated=DateTime.Now},
-                new Division{ Name="Men's Recreational", DateCreated=DateTime.Now}
+                new Division{ Name="Men's Open", DateCreated=DateTime.Now, Owner=user},
+                new Division{ Name="Men's Recreational", DateCreated=DateTime.Now, Owner=user}
             }.ForEach(d => context.Divisions.Add(d));
 
             new List<League>
             {
-                new League{ Name="Bloomington South", DateCreated=DateTime.Now},
-                new League{ Name="Bloomington South", DateCreated=DateTime.Now},
-                new League{ Name="Target Center", DateCreated=DateTime.Now},                
-                new League{ Name="Fridley",  DateCreated=DateTime.Now},
-                new League{ Name="Champlin", DateCreated=DateTime.Now},
-                new League{ Name="Champlin", DateCreated=DateTime.Now}
+                new League{ Name="Bloomington South", DateCreated=DateTime.Now, Owner=user, Teams = new List<Team>{
+                    new Team{ TeamName="Abe Froman",  DateCreated=DateTime.Now, Owner=user, Players= new List<Player>{
+                      new Player { Name="Matt Krebs", Number=2, Position="Center", Experiance="College", Height="6'8\"", Weight="270", TwitterHandle="mattkrebs", DateCreated=DateTime.Now, Owner=user},
+                        new Player { Name="Hans Hennen", Number=8, Position="Forward", Experiance="College", Height="6'3\"", Weight="210", TwitterHandle="hwh3nn3n", DateCreated=DateTime.Now, Owner=user}
+                 
+                    }},
+                    new Team{ TeamName="Rebels", DateCreated=DateTime.Now, Owner=user, Players= new List<Player>{
+                        new Player { Name="Nels Fogalberg", Number=2, Position="Center", Experiance="College", Height="6'8\"", Weight="170", DateCreated=DateTime.Now, Owner=user},
+                        new Player { Name="Ryan Janson", Number=4, Position="Guard", Experiance="High School", Height="5'11\"", Weight="210",TwitterHandle="ryjans", DateCreated=DateTime.Now, Owner=user},
+                        new Player { Name="Nate", Number=23, Position="Guard", Experiance="College", Height="6'2\"", Weight="190", DateCreated=DateTime.Now, Owner=user}
+                
+                    }},
+                    new Team{ TeamName="Celtics", DateCreated=DateTime.Now, Owner=user}
+                }
+                },
+                
+                new League{ Name="Target Center", DateCreated=DateTime.Now, Owner=user, Teams = new List<Team>{
+                    new Team{ TeamName="Los Gouchos", DateCreated=DateTime.Now, Owner=user},
+                    new Team{ TeamName="Saints", DateCreated=DateTime.Now, Owner=user},
+                    new Team{ TeamName="Rockets", DateCreated=DateTime.Now, Owner=user}
+                }},                
+                new League{ Name="Fridley",  DateCreated=DateTime.Now, Owner=user},
+                new League{ Name="Champlin", DateCreated=DateTime.Now, Owner=user},
+                new League{ Name="Champlin", DateCreated=DateTime.Now, Owner=user}
             }.ForEach(l => context.Leagues.Add(l));
 
-            new List<Team>
-            {
-                new Team{ TeamName="Abe Froman",  DateCreated=DateTime.Now},
-                new Team{ TeamName="Rebels", DateCreated=DateTime.Now},
-                new Team{ TeamName="Celtics", DateCreated=DateTime.Now},
-                new Team{ TeamName="Los Gouchos", DateCreated=DateTime.Now},
-                new Team{ TeamName="Saints", DateCreated=DateTime.Now},
-                new Team{ TeamName="Rockets", DateCreated=DateTime.Now}
+    
 
-            }.ForEach(t => context.Teams.Add(t));
-
-            new List<Player>
-            {
-                new Player { Name="Matt Krebs", Number=2, Position="Center", Experiance="College", Height="6'8\"", Weight="270", TwitterHandle="mattkrebs", DateCreated=DateTime.Now},
-                new Player { Name="Hans Hennen", Number=8, Position="Forward", Experiance="College", Height="6'3\"", Weight="210", TwitterHandle="hwh3nn3n", DateCreated=DateTime.Now},
-                new Player { Name="Nels Fogalberg", Number=2, Position="Center", Experiance="College", Height="6'8\"", Weight="170", DateCreated=DateTime.Now},
-                new Player { Name="Ryan Janson", Number=4, Position="Guard", Experiance="High School", Height="5'11\"", Weight="210",TwitterHandle="ryjans", DateCreated=DateTime.Now},
-                new Player { Name="Nate", Number=23, Position="Guard", Experiance="College", Height="6'2\"", Weight="190", DateCreated=DateTime.Now}
-                
-
-
-            }.ForEach(p => context.Players.Add(p));
-
+           
 
             new List<Region>
             {

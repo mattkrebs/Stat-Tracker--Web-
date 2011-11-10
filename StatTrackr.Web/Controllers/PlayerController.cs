@@ -26,6 +26,8 @@ namespace StatTrackr.Web.Controllers
             return View(new PlayerModel());
         }
 
+
+
         [HttpPost]
         public ActionResult Create(PlayerModel player)
         {

@@ -52,3 +52,10 @@ D:\Personal\BasketballLeague\trunk\WebApp\StatTrackr.WCF\bin\Debug\StatTrackr.Fr
 D:\Personal\BasketballLeague\trunk\WebApp\StatTrackr.WCF\obj\Debug\StatTrackr.WCF.csprojResolveAssemblyReference.cache
 D:\Personal\BasketballLeague\trunk\WebApp\StatTrackr.WCF\obj\Debug\StatTrackr.WCF.dll
 D:\Personal\BasketballLeague\trunk\WebApp\StatTrackr.WCF\obj\Debug\StatTrackr.WCF.pdb
+D:\Personal\Stat-Tracker--Web-\StatTrackr.WCF\bin\Debug\StatTrackr.WCF.dll
+D:\Personal\Stat-Tracker--Web-\StatTrackr.WCF\bin\Debug\StatTrackr.WCF.pdb
+D:\Personal\Stat-Tracker--Web-\StatTrackr.WCF\bin\Debug\StatTrackr.Framework.dll
+D:\Personal\Stat-Tracker--Web-\StatTrackr.WCF\bin\Debug\StatTrackr.Framework.pdb
+D:\Personal\Stat-Tracker--Web-\StatTrackr.WCF\obj\Debug\StatTrackr.WCF.csprojResolveAssemblyReference.cache
+D:\Personal\Stat-Tracker--Web-\StatTrackr.WCF\obj\Debug\StatTrackr.WCF.dll
+D:\Personal\Stat-Tracker--Web-\StatTrackr.WCF\obj\Debug\StatTrackr.WCF.pdb

@@ -21,9 +21,9 @@ namespace StatTrackr.Framework.Domain
         public virtual Division Division { get; set; }
         [DataMember]
         public virtual ICollection<Team> Teams { get; set; }
-
+        [DataMember]
         public virtual Region Region { get; set; }
-
+        [DataMember]
         public virtual User Owner { get; set; }
 
 

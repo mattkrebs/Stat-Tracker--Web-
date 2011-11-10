@@ -7,35 +7,23 @@
             <td>Loses</td>
             <td>Win %</td>
         </tr>
+        @foreach (var team in Model)
+        {
        <tr>
-        <td>Abe Froman</td>
+        <td><span class="cteam" rel="/Team/QuickView/@team.TeamID">@team.TeamName</span></td>
         <td>4</td>
         <td>1</td>
         <td>.750</td>
-        </tr>
-       <tr>
-        <td>Abe Froman</td>
-        <td>4</td>
-        <td>1</td>
-        <td>.750</td>
-        </tr>
-        <tr>
-        <td>Abe Froman</td>
-        <td>4</td>
-        <td>1</td>
-        <td>.750</td>
-        </tr>
-        <tr>
-        <td>Abe Froman</td>
-        <td>4</td>
-        <td>1</td>
-        <td>.750</td>
-        </tr>
+        </tr>   
+        }
     </table>
 </div>
 <div id="teamdetail">
 
 </div>
 <script type="text/javascript">
-
+    $(".cteam").live("click", function () {
+        
+        $("#teamdetail").load($(this).attr("rel"));
+    });
 </script>

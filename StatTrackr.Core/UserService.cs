@@ -46,7 +46,7 @@ namespace StatTrackr.Core
         #region ICoreService<User> Members
 
 
-        public User GetById(dynamic Id)
+        public User GetById(int Id)
         {
             throw new NotImplementedException();
         }

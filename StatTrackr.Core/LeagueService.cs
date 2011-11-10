@@ -17,7 +17,7 @@ namespace StatTrackr.Core
             using (var ctx = new StatContext())
             {
                 User Owner = UserService.GetOwner(UserID);
-                return ctx.Leagues.Where(x => x.Owner.UserID == Owner.UserID).ToList(); 
+                return ctx.Leagues.Include("Teams").Where(x => x.Owner.UserID == Owner.UserID).ToList(); 
             }
         }
 
@@ -41,7 +41,7 @@ namespace StatTrackr.Core
         #region ICoreService<League> Members
 
 
-        public League GetById(dynamic Id)
+        public League GetById(int Id)
         {
             throw new NotImplementedException();
         }

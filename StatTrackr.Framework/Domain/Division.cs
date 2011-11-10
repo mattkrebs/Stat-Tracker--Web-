@@ -20,7 +20,7 @@ namespace StatTrackr.Framework.Domain
         public string Name { get; set; }
 
 
-        public virtual User OwnerID { get; set; }
+        public virtual User Owner { get; set; }
 
         //public static Division getById(int id)
         //{

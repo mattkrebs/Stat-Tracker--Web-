@@ -1,0 +1,22 @@
+﻿@model StatTrackr.Framework.Domain.Team
+           
+<div>
+    <h4>@Model.TeamName</h4>
+    <table>
+        <tr>
+            <td>Number</td>
+            <td>Name</td>
+        </tr>
+        @if (Model.Players != null)
+        {
+            foreach (var player in Model.Players)
+            {
+            <tr>
+                <td>@player.Number</td>
+                <td>@player.Name</td>
+            </tr>   
+            }
+        }
+        
+    </table>
+</div>

@@ -72,11 +72,22 @@ namespace StatTrackr.Core
         #region ICoreService<Team> Members
 
 
-        public Team GetById(dynamic Id)
+        public Team GetById(int id)
         {
-            throw new NotImplementedException();
+            using (var ctx = new StatContext())
+            {
+                return ctx.Teams.Include("Players").Where(x => x.TeamID == id).FirstOrDefault();
+            }
         }
 
         #endregion
+
+        public List<Team> GetAllByLeagueId(int id)
+        {
+            using (var ctx = new StatContext())
+            {
+                return ctx.Teams.Where(x => x.League.LeagueID == id).ToList();
+            }
+        }
     }
 }

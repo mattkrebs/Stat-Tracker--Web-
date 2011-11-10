@@ -18,12 +18,23 @@ namespace StatTrackr.Web.Controllers
         // GET: /Team/
         StatContext ctx = new StatContext();
         TeamService service = new TeamService();
+        
         public ActionResult Index(int id)
         {
             Team team = ctx.Teams.Where(x => x.TeamID == id).FirstOrDefault();
-            return View(team);
+            return PartialView(team);
         }
-        
+        public ActionResult List(int id)
+        {
+            List<Team> teams = service.GetAllByLeagueId(id);
+            return PartialView("List", teams);
+        }
+
+        public ActionResult QuickView(int id)
+        {
+            return PartialView("QuickView", service.GetById(id));
+        }
+
         public ActionResult Create()
         {
             return View("Create", new TeamModel());
@@ -91,6 +102,7 @@ namespace StatTrackr.Web.Controllers
         public ActionResult Edit(int id)
         {
             Team team = ctx.Teams.Find(id);
+           
             return View(team);
         }
 

@@ -11,7 +11,7 @@ using StatTrackr.Framework.Security;
 
 namespace StatTrackr.Web.Controllers
 {
-   
+   [Authorize(Roles = "Administrator")]
     public class LeagueController : Controller
     {
         //All ctx calls should get replaced with Service calls from the StatTrackr.Core.
