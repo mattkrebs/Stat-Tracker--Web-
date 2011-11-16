@@ -34,8 +34,13 @@ namespace StatTrackr.Framework.Domain
         public virtual Nullable<DateTime> PasswordChangedDate { get; set; }
         public virtual string PasswordVerificationToken { get; set; }
         public virtual Nullable<DateTime> PasswordVerificationTokenExpirationDate { get; set; }
+        
 
         public virtual ICollection<Role> Roles { get; set; }
+
+        public virtual string LoginToken { get; set; }
+        public virtual Nullable<DateTime> LoginTokenExpirationDate { get; set; }
+        
 
         //Optional
         public virtual string FirstName { get; set; }
@@ -43,5 +48,8 @@ namespace StatTrackr.Framework.Domain
         public virtual string TimeZone { get; set; }
         public virtual string Culture { get; set; }
         public virtual User Owner { get; set; }
+
+
+        public virtual ICollection<Api> Apis { get; set; }
     }
 }

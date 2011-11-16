@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Runtime.CompilerServices;
 using System.Net;
+using StatTrackr.Framework.Domain;
 
 namespace StatTrackr.Framework.Security
 {
@@ -70,6 +71,54 @@ namespace StatTrackr.Framework.Security
                 return false;
             }
         }
+
+        public static bool ValidateUser(string userNameOrEmail, string password, string apikey)
+        {
+            CodeFirstExtendedProvider provider = VerifyProvider();
+            dynamic success = provider.ExtendedValidateUser(userNameOrEmail, password);
+            if (!(string.IsNullOrEmpty(success)))
+            {
+                using (StatContext context = new StatContext())
+                {
+                    User user = null;
+
+                    user = context.Users.FirstOrDefault(x => x.UserName == userNameOrEmail);
+                    if (user == null)
+                        user = context.Users.FirstOrDefault(x => x.Email == userNameOrEmail);
+
+                    if (user == null)
+                        return false;
+
+                    if (!user.IsConfirmed)
+                        return false;
+
+                    
+                    Api key = null;
+                    if (user.Apis != null)
+                    {
+                        key = user.Apis.FirstOrDefault(x => x.ApiKey == apikey);
+                        if (key == null)
+                            return false;
+
+                        if (key.ExparationDate > DateTime.Now)
+                            return false;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+                }
+
+               
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
         public static void Logout()
         {

@@ -5,6 +5,7 @@ using System.Text;
 using StatTrackr.Framework.Domain;
 using StatTrackr.Framework;
 using System.Data.Entity;
+using StatTrackr.Framework.Security;
 
 
 namespace StatTrackr.Core
@@ -52,5 +53,19 @@ namespace StatTrackr.Core
         }
 
         #endregion
+
+
+
+        public static string Login(string user, string password, string apikey)
+        {
+            if (CodeFirstSecurity.ValidateUser(user, password, apikey))
+            {
+                return CodeFirstCrypto.GenerateToken();
+            }
+            else
+            {
+               return ("The user name, password or api key provided is incorrect.");
+            }
+        }
     }
 }

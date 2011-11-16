@@ -37,6 +37,7 @@
     <Reference Include="System.ServiceModel.Activation" />
     <Reference Include="System.ServiceModel.Routing" />
     <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +54,10 @@
     <Compile Include="StatTrackrServiceJSON.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\StatTrackr.Core\StatTrackr.Core.csproj">
+      <Project>{BE37BCA4-FF74-4E05-B447-EF54D92E4CAF}</Project>
+      <Name>StatTrackr.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StatTrackr.Framework\StatTrackr.Framework.csproj">
       <Project>{B2878095-E9CC-4DE0-B70A-146202DE9049}</Project>
       <Name>StatTrackr.Framework</Name>

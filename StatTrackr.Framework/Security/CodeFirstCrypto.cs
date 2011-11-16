@@ -28,7 +28,7 @@ namespace StatTrackr.Framework.Security
             return buf;
         }
 
-        static internal string GenerateToken()
+        public static string GenerateToken()
         {
             byte[] tokenBytes = new byte[TOKEN_SIZE_IN_BYTES];
             using (RNGCryptoServiceProvider prng = new RNGCryptoServiceProvider())

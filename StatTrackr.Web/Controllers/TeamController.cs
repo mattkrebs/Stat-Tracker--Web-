@@ -37,7 +37,7 @@ namespace StatTrackr.Web.Controllers
 
         public ActionResult Create()
         {
-            return View("Create", new TeamModel());
+            return View("Create", new Team());
         }
 
         public ActionResult CreatePartial(int id)

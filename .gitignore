@@ -12,3 +12,5 @@
 _ReSharper.*
 *.resharper
 Ankh.NoLoad
+*.config
+*.csproj.user

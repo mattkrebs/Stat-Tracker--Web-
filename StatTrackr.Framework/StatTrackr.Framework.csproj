@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\Api.cs" />
     <Compile Include="Domain\Base\DomainBase.cs" />
     <Compile Include="Domain\Division.cs" />
     <Compile Include="Domain\League.cs" />

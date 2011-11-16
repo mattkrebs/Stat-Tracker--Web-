@@ -16,10 +16,9 @@ namespace StatTrackr.WCF.Interfaces
 
         [WebInvoke(BodyStyle = WebMessageBodyStyle.WrappedRequest,
         ResponseFormat = WebMessageFormat.Json,
-        UriTemplate = "hello")]
-        
+        UriTemplate = "authenticate")]        
         [OperationContract]
-        string hello();
+        string authenticate(string username, string password, string apikey);
 
 
     
