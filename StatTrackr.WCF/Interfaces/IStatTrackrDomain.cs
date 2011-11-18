@@ -16,12 +16,24 @@ namespace StatTrackr.WCF.Interfaces
 
         [WebInvoke(BodyStyle = WebMessageBodyStyle.WrappedRequest,
         ResponseFormat = WebMessageFormat.Json,
-        UriTemplate = "authenticate")]        
+        UriTemplate = "authenticate", Method = "POST")]        
         [OperationContract]
         string authenticate(string username, string password, string apikey);
 
 
-    
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.WrappedRequest, ResponseFormat = WebMessageFormat.Json, 
+            UriTemplate = "team/create", Method = "POST")]
+        [OperationContract]
+        string createteam(string token, Team team);
 
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.WrappedRequest, ResponseFormat = WebMessageFormat.Json,
+           UriTemplate = "team/update", Method = "POST")]
+        [OperationContract]
+        string updateteam(string token, Team team);
+
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.WrappedRequest, ResponseFormat = WebMessageFormat.Json, UriTemplate = "team/all", Method = "POST")]
+        [OperationContract]
+        string getteams(string token);
+       
     }
 }

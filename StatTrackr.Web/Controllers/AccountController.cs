@@ -102,7 +102,8 @@ namespace StatTrackr.Web.Controllers
         }
 
         //
-        // POST: /Account/Register
+       
+
 
         [HttpPost]
         public ActionResult Register(RegisterModel model)
@@ -111,9 +112,6 @@ namespace StatTrackr.Web.Controllers
             {
                
                 CodeFirstSecurity.CreateAccount(model.UserName, model.Password, model.Email);
-
-                
-                    
                     return RedirectToAction("Index", "Home");
               
             }

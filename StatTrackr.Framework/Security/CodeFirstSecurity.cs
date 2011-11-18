@@ -72,7 +72,7 @@ namespace StatTrackr.Framework.Security
             }
         }
 
-        public static bool ValidateUser(string userNameOrEmail, string password, string apikey)
+        public static string ValidateUser(string userNameOrEmail, string password, string apikey)
         {
             CodeFirstExtendedProvider provider = VerifyProvider();
             dynamic success = provider.ExtendedValidateUser(userNameOrEmail, password);
@@ -86,36 +86,31 @@ namespace StatTrackr.Framework.Security
                     if (user == null)
                         user = context.Users.FirstOrDefault(x => x.Email == userNameOrEmail);
 
-                    if (user == null)
-                        return false;
+                    if (user == null || !user.IsConfirmed)
+                        return "Login Failed";
 
-                    if (!user.IsConfirmed)
-                        return false;
-
-                    
                     Api key = null;
                     if (user.Apis != null)
                     {
                         key = user.Apis.FirstOrDefault(x => x.ApiKey == apikey);
-                        if (key == null)
-                            return false;
-
-                        if (key.ExparationDate > DateTime.Now)
-                            return false;
+                        if (key == null || key.ExparationDate < DateTime.Now)
+                            return "Invalid Api Key";
                     }
                     else
                     {
-                        return false;
+                        return "Invalid Api Key";
                     }
-
+                    string token = Guid.NewGuid().ToString();
+                    user.LoginToken = token;
+                    user.LoginTokenExpirationDate = DateTime.Now.AddDays(2);
+                    context.SaveChanges();
+                    return token;
                 }
 
-               
-                return true;
             }
             else
             {
-                return false;
+                return "Invalid Login";
             }
         }
 

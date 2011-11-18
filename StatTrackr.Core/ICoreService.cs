@@ -7,7 +7,7 @@ namespace StatTrackr.Core
 {
     public interface ICoreService<T>
     {
-        IList<T> GetAll(Guid UserID);
+        //List<T> GetAll(Guid UserID);
 
         T GetById(int Id);
 

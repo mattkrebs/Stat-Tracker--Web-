@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using StatTrackr.Framework.Domain.Base;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace StatTrackr.Framework.Domain
 {
-    
-    public class User : DomainBase
+    [DataContract(IsReference=true)]
+    public class User
     {
         //Membership required
         [Key()]
@@ -41,12 +42,15 @@ namespace StatTrackr.Framework.Domain
         public virtual string LoginToken { get; set; }
         public virtual Nullable<DateTime> LoginTokenExpirationDate { get; set; }
         
+        public DateTime? DateCreated { get; set; }
+        public DateTime? DateMotified { get; set; }
 
         //Optional
         public virtual string FirstName { get; set; }
         public virtual string LastName { get; set; }
         public virtual string TimeZone { get; set; }
         public virtual string Culture { get; set; }
+        [IgnoreDataMember]
         public virtual User Owner { get; set; }
 
 

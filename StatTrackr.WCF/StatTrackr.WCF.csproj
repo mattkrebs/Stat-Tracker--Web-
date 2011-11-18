@@ -33,11 +33,13 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Activation" />
     <Reference Include="System.ServiceModel.Routing" />
     <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,6 +51,7 @@
     <Compile Include="ErrorHandeling\ServiceErrorBehaviorAttribute.cs" />
     <Compile Include="Interfaces\IStatTrackrDomain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicesHelper.cs" />
     <Compile Include="StatTrackrService.cs" />
     <Compile Include="StatTrackrServiceBase.cs" />
     <Compile Include="StatTrackrServiceJSON.cs" />

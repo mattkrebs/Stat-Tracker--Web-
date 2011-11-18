@@ -27,7 +27,7 @@ namespace StatTrackr.Framework.Security
             }
             return buf;
         }
-
+        
         public static string GenerateToken()
         {
             byte[] tokenBytes = new byte[TOKEN_SIZE_IN_BYTES];

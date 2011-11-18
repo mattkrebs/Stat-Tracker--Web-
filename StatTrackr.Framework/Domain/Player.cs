@@ -12,7 +12,7 @@ using System.ComponentModel.DataAnnotations;
 namespace StatTrackr.Framework.Domain
 {
     [DataContract]
-    public class Player : DomainBase
+    public class Player 
     {
 
         [DataMember]
@@ -43,11 +43,13 @@ namespace StatTrackr.Framework.Domain
         public string FavoriteTeam { get; set; }
         [DataMember]
         public string PhotoUrl { get; set; }
-        [DataMember]
-        public virtual ICollection<Team> Teams { get; set; }
-
-
+      
         public virtual User Owner { get; set; }
+
+        [DataMember]
+        public DateTime? DateCreated { get; set; }
+        [DataMember]
+        public DateTime? DateMotified { get; set; }
 
         //public static List<Player> GetAllPlayers()
         //{

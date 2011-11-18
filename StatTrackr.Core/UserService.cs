@@ -16,13 +16,14 @@ namespace StatTrackr.Core
         {
             using (var ctx = new StatContext())
             {
-                return ctx.Users.Find(UserID).Owner;
+                Guid ownerid = ctx.Users.Find(UserID).Owner.UserID;
+                return ctx.Users.FirstOrDefault(x => x.UserID == ownerid);
             }
         }
 
         #region ICoreService<User> Members
 
-        public IList<User> GetAll(Guid UserID)
+        public List<User> GetAll(Guid UserID)
         {
             throw new NotImplementedException();
         }
@@ -58,13 +59,15 @@ namespace StatTrackr.Core
 
         public static string Login(string user, string password, string apikey)
         {
-            if (CodeFirstSecurity.ValidateUser(user, password, apikey))
+            return CodeFirstSecurity.ValidateUser(user, password, apikey);
+        }
+
+        public static User GetOwner(string token)
+        {
+            using (var ctx = new StatContext())
             {
-                return CodeFirstCrypto.GenerateToken();
-            }
-            else
-            {
-               return ("The user name, password or api key provided is incorrect.");
+                User u = ctx.Users.FirstOrDefault(x => x.LoginToken == token && x.LoginTokenExpirationDate > DateTime.Now);
+                return ctx.Users.Include("Owner").FirstOrDefault(x => x.LoginToken == token && x.LoginTokenExpirationDate > DateTime.Now).Owner;
             }
         }
     }

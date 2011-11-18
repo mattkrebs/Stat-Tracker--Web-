@@ -8,6 +8,7 @@ using StatTrackr.Framework;
 using StatTrackr.Framework.Domain;
 using StatTrackr.Core;
 using StatTrackr.Framework.Security;
+using Newtonsoft.Json;
 
 namespace StatTrackr.Web.Controllers
 {
@@ -46,7 +47,7 @@ namespace StatTrackr.Web.Controllers
          
             return PartialView("_TeamCreatePartial",new TeamModel {LeagueId = league.LeagueID });
         }
-
+       
         [HttpPost]
         public ActionResult Create(TeamModel team)
         {
@@ -58,6 +59,8 @@ namespace StatTrackr.Web.Controllers
 
             return RedirectToAction("Index","League");
         }
+       
+       
 
         public ActionResult Add(int id)
         {
@@ -135,7 +138,7 @@ namespace StatTrackr.Web.Controllers
         public ActionResult CreatePlayer(int teamid)
         {
             Player player = new Player();
-            player.Teams.Add(ctx.Teams.Find(teamid));
+            //player.Teams.Add(ctx.Teams.Find(teamid));
             return PartialView("_PlayerCreatePartial", player);
         }
 

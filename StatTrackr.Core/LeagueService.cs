@@ -12,7 +12,7 @@ namespace StatTrackr.Core
 
         #region ICoreService<League> Members
 
-        public IList<League> GetAll(Guid UserID)
+        public List<League> GetAll(Guid UserID)
         {
             using (var ctx = new StatContext())
             {

@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 
 namespace StatTrackr.Framework.Domain.Base
 {
+    [DataContract]
     public class DomainBase
     {
         [DataMember]

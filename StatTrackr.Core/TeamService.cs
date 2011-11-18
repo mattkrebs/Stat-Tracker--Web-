@@ -10,19 +10,20 @@ namespace StatTrackr.Core
     public class TeamService : ICoreService<Team>
     {
         // Gets All Teams By looking up the Owner ID and retrieving by that
-        public IList<Team> GetAll(Guid UserID)
-        {
-            using (var ctx = new StatContext())
-            {
-                return ctx.Teams.Where(x => x.Owner == UserService.GetOwner(UserID)).ToList();
-            }
-        }
-
-        public IList<Team> GetAll()
+        public List<Team> GetAll()
         {
             using (var ctx = new StatContext())
             {
                 return ctx.Teams.ToList();
+            }
+        }
+
+        public List<Team> GetAll(Guid OwnerId)
+        {
+            using (var ctx = new StatContext())
+            {
+                List<Team> teams = ctx.Teams.Where(x => x.Owner.UserID == OwnerId).ToList();
+                return teams;
             }
         }
 
@@ -33,25 +34,36 @@ namespace StatTrackr.Core
 
 
         #region ICoreService<Team> Members
+        
 
-
-        public void Create(Team obj, Guid UserID)
+        public void Create(Team obj, Guid OwnerId)
         {
             using (var ctx = new StatContext())
             {
-                obj.Owner = UserService.GetOwner(UserID);
+                obj.Owner = ctx.Users.FirstOrDefault(x => x.UserID == OwnerId);
+                obj.DateCreated = DateTime.Now;
+                obj.DateMotified = DateTime.Now;
                 ctx.Teams.Add(obj);
                 ctx.SaveChanges();
             }
         }
 
-        public void Update(Team obj, Guid UserID)
+        public void Update(Team obj, Guid OwnerId)
         {
             using (var ctx = new StatContext())
             {
-                if (obj.Owner == UserService.GetOwner(UserID)){
-                    ctx.Entry(obj).State = System.Data.EntityState.Modified;
-                    ctx.SaveChanges();
+                Team team = ctx.Teams.Find(obj.TeamID);
+                if (team.Owner.UserID == OwnerId)
+                {
+                    
+                    if (obj.TeamName != team.TeamName)
+                        team.TeamName = obj.TeamName;
+                    if (obj.PhotoUrl != team.PhotoUrl)
+                        team.PhotoUrl = obj.PhotoUrl;
+
+                    team.DateMotified = DateTime.Now;
+                    ctx.Entry(team).State = System.Data.EntityState.Modified;
+                    int i =  ctx.SaveChanges();
                 }
             }
         }
@@ -86,8 +98,11 @@ namespace StatTrackr.Core
         {
             using (var ctx = new StatContext())
             {
+             
                 return ctx.Teams.Where(x => x.League.LeagueID == id).ToList();
             }
         }
+
+       
     }
 }

@@ -34,6 +34,7 @@ namespace StatTrackr.Framework
 
             user.Owner = user;
             user.Roles = new List<Role> { new Role { RoleName = "Administrator" } };
+            user.Apis = new List<Api> { new Api { ApiKey = "8e682cad-35ab-476a-a410-0e008150600c", ExparationDate = DateTime.Now.AddMonths(1) } };
             context.Entry(user).State = System.Data.EntityState.Modified;
             context.SaveChanges();
 

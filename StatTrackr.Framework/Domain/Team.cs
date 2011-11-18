@@ -6,11 +6,12 @@ using System.Runtime.Serialization;
 using StatTrackr.Framework.Domain.Base;
 using System.Collections;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Script.Serialization;
 
 namespace StatTrackr.Framework.Domain
 {
     [DataContract]
-    public class Team : DomainBase
+    public class Team 
     {
         [DataMember]
         [Key]
@@ -21,13 +22,17 @@ namespace StatTrackr.Framework.Domain
         [DataMember]
         [StringLength(255)]
         public string PhotoUrl { get; set; }
-        [DataMember]
+        
         public virtual League League { get; set; }
-        [DataMember]
+        
         public virtual ICollection<Player> Players { get; set; }
-        [DataMember]
+        
         public virtual User Owner { get; set; }
 
+        [DataMember]
+        public DateTime? DateCreated { get; set; }
+        [DataMember]
+        public DateTime? DateMotified { get; set; }
         
 
 
@@ -45,4 +50,5 @@ namespace StatTrackr.Framework.Domain
         //    throw new NotImplementedException();
         //}
     }
+
 }

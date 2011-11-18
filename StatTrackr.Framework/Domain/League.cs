@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations;
 namespace StatTrackr.Framework.Domain
 {
     [DataContract]
-    public class League : DomainBase
+    public class League 
     {
         [DataMember]
         [Key]
@@ -25,7 +25,10 @@ namespace StatTrackr.Framework.Domain
         public virtual Region Region { get; set; }
         [DataMember]
         public virtual User Owner { get; set; }
-
+        [DataMember]
+        public DateTime? DateCreated { get; set; }
+        [DataMember]
+        public DateTime? DateMotified { get; set; }
 
 
 
