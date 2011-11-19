@@ -31,6 +31,7 @@ namespace StatTrackr.Web.Controllers
             ts.Create(team, owner.UserID);
             return "success";
         }
+
         [HttpPost]
         public string UpdateTeam(Team team, string token)
         {

@@ -13,7 +13,6 @@
 	    <link rel="stylesheet" href="@Url.Content("~/content/styles/columnal/columnal.css")" type="text/css" media="screen" />
 
 	    <!-- Fixes for IE -->
-        
 	    <!--[if lt IE 9]>
                 <link rel="stylesheet" href="@Url.Content("~/content/styles/columnal/ie.css")" type="text/css" media="screen" />
                 <link rel="stylesheet" href="@Url.Content("~/content/styles/columnal/ie8.css")" type="text/css" media="screen" />
@@ -31,6 +30,7 @@
         <script type="text/javascript" src="@Url.Content("~/content/scripts/jquery.placeholder.1.2.min.shrink.js")"></script>
 
         <!-- Use CDN on production server -->
+        <script type="text/javascript" src="@Url.Content("~/Content/scripts/jquery-1.6.4.min.js")"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
         
@@ -52,10 +52,24 @@
                         </div>
                         <div class="right">
                             <ul id="toolbar">
-                                <li><span>Logged in as</span> <a class="user" href="#">Administrator</a> <a id="loginarrow" href="#"></a></li>
-                                <li><a id="messages" href="#">Messages</a></li>
-                                <li><a id="settings" href="#">Settings</a></li>
-                                <li><a id="search" href="#">Search</a></li>
+                                @if (StatTrackr.Framework.Security.CodeFirstSecurity.IsAuthenticated)
+                                {
+                                    <li><span>Logged in as</span>
+                                        <a class="user" href="#">@StatTrackr.Framework.Security.CodeFirstSecurity.CurrentUserName</a>
+                                        <a id="loginarrow" href="javascript:void(0);"></a>
+                                    </li>
+                                    <li><a id="messages" href="#">Messages</a></li>
+                                    <li><a id="settings" href="#">Settings</a></li>
+                                    <li><a id="search" href="#">Search</a></li>
+                                }
+                                else
+                                {
+                                    // html for logging in
+                                    <li>
+                                        @Html.ActionLink("Login", "login")
+                                    @*<a id="login" href="home/login">Login</a>*@
+                                    </li>
+                                }
                             </ul>
                             <div id="logindrop">
                                 <ul>
@@ -69,20 +83,39 @@
                         </div>  
                     </div>
                 </header>
-                <nav class="container">
-                    <select class="mobile-only row clearfix" onchange="window.open(this.options[this.selectedIndex].value,'_top')">
-                            <option value="index.html">Stat Tracker</option>
-                    </select>
+                @if (StatTrackr.Framework.Security.CodeFirstSecurity.IsAuthenticated)
+                {
+                    <nav class="container">
+                        <select class="mobile-only row clearfix" onchange="window.open(this.options[this.selectedIndex].value,'_top')">
+                                <option value="index.html">Stat Tracker</option>
+                        </select>
 
-                    <ul class="sf-menu mobile-hide row clearfix">
-                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "home")><a href="/"><span>Home</span></a></li>
-                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "divisions")><a href="/divisions"><span>Divisions</span></a></li>
-                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "teams")><a href="/teams"><span>Teams</span></a></li>
-                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "players")><a href="/players"><span>Players</span></a></li>
-                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "stats")><a href="/stats"><span>Stats</span></a></li>
-                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "games")><a href="/games"><span>Games</span></a></li>
-                    </ul>
-                </nav>
+                        <ul class="sf-menu mobile-hide row clearfix">
+                            <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "home")><a href="/"><span>Home</span></a></li>
+                            <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "divisions")><a href="/divisions"><span>Divisions</span></a></li>
+                            <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "teams")><a href="/teams"><span>Teams</span></a></li>
+                            <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "players")><a href="/players"><span>Players</span></a></li>
+                            <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "stats")><a href="/stats"><span>Stats</span></a></li>
+                            <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "games")><a href="/games"><span>Games</span></a></li>
+                        </ul>
+                    </nav>
+                }
+                else
+                {
+                    <nav class="container">
+                        <select class="mobile-only row clearfix" onchange="window.open(this.options[this.selectedIndex].value,'_top')">
+                                <option value="index.html">Stat Tracker</option>
+                        </select>
+
+                        <ul class="sf-menu mobile-hide row clearfix">
+                            <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "home")><a href="/"><span>Home</span></a></li>
+                            <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "about")><a href="/about"><span>About Us</span></a></li>
+                            <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "services")><a href="/services"><span>Service</span></a></li>
+                            <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "apps")><a href="/apps"><span>Apps</span></a></li>
+                            <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "contact")><a href="/contact"><span>Contact Us</span></a></li>
+                        </ul>
+                    </nav>
+                }
                 <div id="titlediv">
                     <div class="clearfix container" id="pattern">
                         <div class="row">

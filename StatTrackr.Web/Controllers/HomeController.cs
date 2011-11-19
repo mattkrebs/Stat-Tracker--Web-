@@ -11,14 +11,24 @@ namespace StatTrackr.Web.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
-            //This is to initallize the DB if it is not created
-            TeamService serv = new TeamService();
+            ViewBag.Title = "Home Page";
+            ViewBag.selectedPage = "home";
 
-            serv.GetAll();
+            //TeamService serv = new TeamService();
+
+            //serv.GetAll();
 
             return View();
         }
+
+        public ActionResult Login()
+        {
+            ViewBag.Title = "Login";
+            ViewBag.selectedPage = "login";
+
+            return View();
+        }
+
 
         public ActionResult About()
         {
