@@ -86,8 +86,115 @@
     <Compile Include="Models\TeamLeagueModel.cs" />
     <Compile Include="Models\TeamModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Helpers\HTMLHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\background\1.png" />
+    <Content Include="Content\images\background\10.png" />
+    <Content Include="Content\images\background\11.png" />
+    <Content Include="Content\images\background\2.png" />
+    <Content Include="Content\images\background\3.png" />
+    <Content Include="Content\images\background\4.png" />
+    <Content Include="Content\images\background\5.png" />
+    <Content Include="Content\images\background\6.png" />
+    <Content Include="Content\images\background\7.png" />
+    <Content Include="Content\images\background\8.png" />
+    <Content Include="Content\images\background\9.png" />
+    <Content Include="Content\images\background\beige_paper.png" />
+    <Content Include="Content\images\background\body_blueprint.png" />
+    <Content Include="Content\images\background\brushed_alu.png" />
+    <Content Include="Content\images\background\concrete_wall.png" />
+    <Content Include="Content\images\background\diagonal-noise.png" />
+    <Content Include="Content\images\background\header_blueprint.png" />
+    <Content Include="Content\images\background\noise.png" />
+    <Content Include="Content\images\background\noisy.png" />
+    <Content Include="Content\images\background\stucco.png" />
+    <Content Include="Content\images\buttons\downarrow_sep.png" />
+    <Content Include="Content\images\buttons\gallery.png" />
+    <Content Include="Content\images\buttons\uparrow_sep.png" />
+    <Content Include="Content\images\code_bg.gif" />
+    <Content Include="Content\images\header\1px.png" />
+    <Content Include="Content\images\header\1px_2.png" />
+    <Content Include="Content\images\header\avatar.png" />
+    <Content Include="Content\images\header\bg_toolbar.png" />
+    <Content Include="Content\images\header\breadcrumbhome.png" />
+    <Content Include="Content\images\header\drp_dwn.png" />
+    <Content Include="Content\images\header\header_bg.png" />
+    <Content Include="Content\images\header\icon_dashboard.png" />
+    <Content Include="Content\images\header\ico_calendar.png" />
+    <Content Include="Content\images\header\ico_chart.png" />
+    <Content Include="Content\images\header\ico_dashboard.png" />
+    <Content Include="Content\images\header\ico_form.png" />
+    <Content Include="Content\images\header\ico_gallery.png" />
+    <Content Include="Content\images\header\ico_grid.png" />
+    <Content Include="Content\images\header\ico_icons.png" />
+    <Content Include="Content\images\header\ico_layout.png" />
+    <Content Include="Content\images\header\ico_msg.png" />
+    <Content Include="Content\images\header\ico_set.png" />
+    <Content Include="Content\images\header\ico_table.png" />
+    <Content Include="Content\images\header\ico_typo.png" />
+    <Content Include="Content\images\header\menu_active.png" />
+    <Content Include="Content\images\header\menu_hover.png" />
+    <Content Include="Content\images\header\menu_separator.png" />
+    <Content Include="Content\images\header\nav-bg.png" />
+    <Content Include="Content\images\header\pagetitle-bg.png" />
+    <Content Include="Content\images\header\pagetitle_grad.png" />
+    <Content Include="Content\images\header\searchbg.png" />
+    <Content Include="Content\images\header\topnav\downarrow.png" />
+    <Content Include="Content\images\header\topnav\editicon.png" />
+    <Content Include="Content\images\header\topnav\logouticon.png" />
+    <Content Include="Content\images\header\topnav\mailicon.png" />
+    <Content Include="Content\images\header\topnav\searchicon.png" />
+    <Content Include="Content\images\header\topnav\separator.png" />
+    <Content Include="Content\images\header\topnav\settingsicon.png" />
+    <Content Include="Content\images\logo.png" />
+    <Content Include="Content\images\notifications\cross.png" />
+    <Content Include="Content\images\notifications\exclamation.png" />
+    <Content Include="Content\images\notifications\gear.png" />
+    <Content Include="Content\images\notifications\information-balloon.png" />
+    <Content Include="Content\images\notifications\tick.png" />
+    <Content Include="Content\scripts\demo.js" />
+    <Content Include="Content\scripts\jquery-1.6.4.min.js" />
+    <Content Include="Content\scripts\jquery.placeholder.1.2.min.shrink.js" />
+    <Content Include="Content\scripts\jqueryui\images\bg_fallback.png" />
+    <Content Include="Content\scripts\jqueryui\images\icon_sprite.png" />
+    <Content Include="Content\scripts\jqueryui\images\progress_bar.png" />
+    <Content Include="Content\scripts\jqueryui\images\progress_bar_dark.png" />
+    <Content Include="Content\scripts\jqueryui\images\slider_handles.png" />
+    <Content Include="Content\scripts\jqueryui\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\scripts\jqueryui\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\scripts\jqueryui\jquery-ui-1.8.16.custom.min.js" />
+    <Content Include="Content\scripts\jqueryui\jqueryui.css" />
+    <Content Include="Content\scripts\muse.js" />
+    <Content Include="Content\scripts\superfish\arrows-ffffff.png" />
+    <Content Include="Content\scripts\superfish\arrows.png" />
+    <Content Include="Content\scripts\superfish\shadow.png" />
+    <Content Include="Content\scripts\superfish\superfish.css" />
+    <Content Include="Content\scripts\superfish\superfish.js" />
+    <Content Include="Content\scripts\uploadify\cancel.png" />
+    <Content Include="Content\scripts\uploadify\check.php" />
+    <Content Include="Content\scripts\uploadify\expressInstall.swf" />
+    <Content Include="Content\scripts\uploadify\jquery-1.4.2.min.js" />
+    <Content Include="Content\scripts\uploadify\jquery.uploadify.v2.1.4.min.js" />
+    <Content Include="Content\scripts\uploadify\swfobject.js" />
+    <Content Include="Content\scripts\uploadify\uploadify.allglyphs.swf" />
+    <Content Include="Content\scripts\uploadify\uploadify.css" />
+    <Content Include="Content\scripts\uploadify\uploadify.php" />
+    <Content Include="Content\scripts\uploadify\uploadify.swf" />
+    <Content Include="Content\styles\buttons.css" />
+    <Content Include="Content\styles\columnal\build.css" />
+    <Content Include="Content\styles\columnal\columnal.css" />
+    <Content Include="Content\styles\columnal\custom.css" />
+    <Content Include="Content\styles\columnal\fixed-960px-ie.css" />
+    <Content Include="Content\styles\columnal\fixed-984px-ie.css" />
+    <Content Include="Content\styles\columnal\ie.css" />
+    <Content Include="Content\styles\columnal\ie6-960px.css" />
+    <Content Include="Content\styles\columnal\ie6-984px.css" />
+    <Content Include="Content\styles\columnal\smallerscreen.css" />
+    <Content Include="Content\styles\config.css" />
+    <Content Include="Content\styles\global.css" />
+    <Content Include="Content\styles\ie8.css" />
+    <Content Include="Content\styles\style.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\editor.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
@@ -131,7 +238,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -191,6 +297,14 @@
   <ItemGroup>
     <Content Include="Views\Team\QuickView.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\images\buttons\Thumbs.db" />
+    <None Include="Content\images\header\Thumbs.db" />
+    <None Include="Content\images\notifications\Thumbs.db" />
+    <None Include="Content\images\Thumbs.db" />
+    <None Include="Content\scripts\uploadify\uploadify.fla" />
+    <Content Include="Views\Helpers\_Helpers.cshtml" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -206,7 +320,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56305</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
