@@ -16,7 +16,6 @@ namespace StatTrackr.Web.Controllers
     public class AccountController : Controller
     {
 
-
         public ActionResult Edit()
         {
             using(var ctx = new StatContext())
@@ -24,8 +23,6 @@ namespace StatTrackr.Web.Controllers
                  User user = ctx.Users.Find(CodeFirstSecurity.CurrentUserId);
                 return View("Edit", user);
 	        }
-
-            
         }
 
 
@@ -37,10 +34,6 @@ namespace StatTrackr.Web.Controllers
 
             return RedirectToAction("Index","Home");
         }
-
-
-
-
 
 
         //
@@ -95,14 +88,10 @@ namespace StatTrackr.Web.Controllers
 
         //
         // GET: /Account/Register
-
         public ActionResult Register()
         {
             return View();
         }
-
-        //
-       
 
 
         [HttpPost]
@@ -122,7 +111,6 @@ namespace StatTrackr.Web.Controllers
 
         //
         // GET: /Account/ChangePassword
-
         [Authorize]
         public ActionResult ChangePassword()
         {
@@ -131,7 +119,6 @@ namespace StatTrackr.Web.Controllers
 
         //
         // POST: /Account/ChangePassword
-
         [Authorize]
         [HttpPost]
         public ActionResult ChangePassword(ChangePasswordModel model)
@@ -168,7 +155,6 @@ namespace StatTrackr.Web.Controllers
 
         //
         // GET: /Account/ChangePasswordSuccess
-
         public ActionResult ChangePasswordSuccess()
         {
             return View();
