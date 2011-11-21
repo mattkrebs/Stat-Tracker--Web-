@@ -17,7 +17,9 @@ namespace StatTrackr.Web.Controllers
         [HttpPost]
         public JsonResult Authenticate(string username, string password, string apikey)
         {
-            return Json(UserService.Login(username, password, apikey));
+            Dictionary<string, string> response = new Dictionary<string, string>();
+            response.Add("token", UserService.Login(username, password, apikey));
+            return Json(response);
         }
 
 
