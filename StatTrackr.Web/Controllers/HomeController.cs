@@ -21,17 +21,37 @@ namespace StatTrackr.Web.Controllers
             return View();
         }
 
-        public ActionResult Login()
+
+        public ActionResult About()
         {
-            ViewBag.Title = "Login";
-            ViewBag.selectedPage = "login";
+            ViewBag.Title = "About Us";
+            ViewBag.selectedPage = "about";
 
             return View();
         }
 
-
-        public ActionResult About()
+        public ActionResult Features()
         {
+            ViewBag.Title = "Services";
+            ViewBag.selectedPage = "features";
+
+            return View();
+        }
+
+        public ActionResult Apps()
+        {
+            ViewBag.Title = "Apps";
+            ViewBag.selectedPage = "apps";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Title = "Contact Us";
+            ViewBag.selectedPage = "contact";
+
+
             return View();
         }
     }

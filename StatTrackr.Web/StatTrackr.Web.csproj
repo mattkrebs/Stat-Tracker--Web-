@@ -307,6 +307,9 @@
     <None Include="Content\scripts\uploadify\uploadify.fla" />
     <Content Include="Views\Helpers\_Helpers.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\Home\Features.cshtml" />
+    <Content Include="Views\Home\Apps.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
