@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using StatTrackr.Core;
 using StatTrackr.Framework.Domain;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace StatTrackr.Web.Controllers
 {
@@ -14,34 +15,34 @@ namespace StatTrackr.Web.Controllers
 
         // POST: /Account/Register
         [HttpPost]
-        public string Authenticate(string username, string password, string apikey)
+        public JsonResult Authenticate(string username, string password, string apikey)
         {
-            return UserService.Login(username, password, apikey);
+            return Json(UserService.Login(username, password, apikey));
         }
 
 
         [HttpPost]
-        public string AddTeam(Team team, string token)
+        public JsonResult AddTeam(Team team, string token)
         {
             User owner = UserService.GetOwner(token);
             TeamService ts = new TeamService();
             if (owner == null)
-                return "Not Logged In";
+                return Json("Not authroized");
 
-            ts.Create(team, owner.UserID);
-            return "success";
+            Team myteam = ts.Create(team, owner.UserID);
+            return Json(myteam);
         }
 
         [HttpPost]
-        public string UpdateTeam(Team team, string token)
+        public JsonResult UpdateTeam(Team team, string token)
         {
             User owner = UserService.GetOwner(token);
             TeamService ts = new TeamService();
             if (owner == null)
-                return "Not Logged In";
+               return Json("Not Logged In");
 
-            ts.Update(team, owner.UserID);
-            return "success";
+            Team myteam = ts.Update(team, owner.UserID);
+            return Json(myteam);
         }
 
         [HttpPost]
@@ -51,6 +52,8 @@ namespace StatTrackr.Web.Controllers
             var model = new TeamService().GetAll(UserService.GetOwner(token).UserID);
             return JsonConvert.SerializeObject(model);
         }
+
+       
 
     }
 }

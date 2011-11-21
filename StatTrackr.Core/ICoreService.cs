@@ -11,9 +11,9 @@ namespace StatTrackr.Core
 
         T GetById(int Id);
 
-        void Create(T obj, Guid UserID);
+        T Create(T obj, Guid UserID);
 
-        void Update(T obj, Guid UserID);
+        T Update(T obj, Guid UserID);
 
         void Delete(T obj, Guid UserID);
 

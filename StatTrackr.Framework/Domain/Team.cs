@@ -26,7 +26,7 @@ namespace StatTrackr.Framework.Domain
         public virtual League League { get; set; }
         
         public virtual ICollection<Player> Players { get; set; }
-        
+        [ScriptIgnore]
         public virtual User Owner { get; set; }
 
         [DataMember]

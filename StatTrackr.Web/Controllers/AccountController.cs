@@ -30,7 +30,7 @@ namespace StatTrackr.Web.Controllers
         public ActionResult Edit(User user)
         {
             UserService uServ = new UserService();
-            uServ.Update(user, CodeFirstSecurity.CurrentUserId);
+          //  uServ.Update(user, CodeFirstSecurity.CurrentUserId);
 
             return RedirectToAction("Index","Home");
         }

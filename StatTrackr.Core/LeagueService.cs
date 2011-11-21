@@ -21,12 +21,12 @@ namespace StatTrackr.Core
             }
         }
 
-        public void Create(League obj, Guid UserID)
+        public League Create(League obj, Guid UserID)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(League obj, Guid UserID)
+        public League Update(League obj, Guid UserID)
         {
             throw new NotImplementedException();
         }

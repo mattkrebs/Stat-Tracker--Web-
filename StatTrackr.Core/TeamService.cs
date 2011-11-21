@@ -36,7 +36,7 @@ namespace StatTrackr.Core
         #region ICoreService<Team> Members
         
 
-        public void Create(Team obj, Guid OwnerId)
+        public Team Create(Team obj, Guid OwnerId)
         {
             using (var ctx = new StatContext())
             {
@@ -45,10 +45,11 @@ namespace StatTrackr.Core
                 obj.DateMotified = DateTime.Now;
                 ctx.Teams.Add(obj);
                 ctx.SaveChanges();
+                return obj;
             }
         }
 
-        public void Update(Team obj, Guid OwnerId)
+        public Team Update(Team obj, Guid OwnerId)
         {
             using (var ctx = new StatContext())
             {
@@ -64,7 +65,9 @@ namespace StatTrackr.Core
                     team.DateMotified = DateTime.Now;
                     ctx.Entry(team).State = System.Data.EntityState.Modified;
                     int i =  ctx.SaveChanges();
+                    
                 }
+                return team;
             }
         }
 

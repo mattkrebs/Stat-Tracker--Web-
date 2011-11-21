@@ -10,7 +10,7 @@ using StatTrackr.Framework.Security;
 
 namespace StatTrackr.Core
 {
-    public class UserService : ICoreService<User>
+    public class UserService 
     {
         public static User GetOwner(Guid UserID)
         {
@@ -21,29 +21,6 @@ namespace StatTrackr.Core
             }
         }
 
-        #region ICoreService<User> Members
-
-        public List<User> GetAll(Guid UserID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Create(User obj, Guid UserID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(User obj, Guid UserID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(User obj, Guid UserID)
-        {
-            throw new NotImplementedException();
-        }
-
-        #endregion
 
         #region ICoreService<User> Members
 
