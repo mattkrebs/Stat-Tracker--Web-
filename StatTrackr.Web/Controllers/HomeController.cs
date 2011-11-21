@@ -30,10 +30,10 @@ namespace StatTrackr.Web.Controllers
             return View();
         }
 
-        public ActionResult Services()
+        public ActionResult Features()
         {
             ViewBag.Title = "Services";
-            ViewBag.selectedPage = "services";
+            ViewBag.selectedPage = "features";
 
             return View();
         }
