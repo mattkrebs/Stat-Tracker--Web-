@@ -32,7 +32,7 @@ namespace StatTrackr.Web.Controllers
 
         public ActionResult Features()
         {
-            ViewBag.Title = "Services";
+            ViewBag.Title = "Features";
             ViewBag.selectedPage = "features";
 
             return View();
