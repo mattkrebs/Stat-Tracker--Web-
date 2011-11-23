@@ -8,6 +8,8 @@ using StatTrackr.Framework.Security;
 
 namespace StatTrackr.Framework.Service
 {
+    // This Navigation Object is a collection of a users Divisons/Leagues/Teams
+    // that will create the drop down lists in the menu on the Admin side
     public class Navigation
     {
 
