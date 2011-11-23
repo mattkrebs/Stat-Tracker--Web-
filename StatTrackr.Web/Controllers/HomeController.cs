@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using StatTrackr.Core;
+using StatTrackr.Framework.Service;
 
 namespace StatTrackr.Web.Controllers
 {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Runtime.Serialization;
 using StatTrackr.Framework.Domain.Base;
 using System.ComponentModel.DataAnnotations;
+using StatTrackr.Framework.Security;
 
 namespace StatTrackr.Framework.Domain
 {
@@ -49,5 +50,26 @@ namespace StatTrackr.Framework.Domain
         //{
         //    throw new NotImplementedException();
         //}
+
+        public static List<League> GetAllLeaguesByUserId(Guid userId)
+        {
+            List<League> leagues = new List<League>();
+
+            using (var ctx = new StatContext())
+            {
+                var results = from e in ctx.Leagues
+                              where e.Owner.UserID == userId
+                              select e;
+
+                leagues = results.ToList<League>();
+            }
+
+            return leagues;
+        }
+
+        public static List<League> GetAllLeaguesByCurrentUser()
+        {
+            return GetAllLeaguesByUserId(CodeFirstSecurity.CurrentUserId);
+        }
     }
 }

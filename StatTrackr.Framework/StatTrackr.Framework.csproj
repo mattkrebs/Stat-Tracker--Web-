@@ -51,6 +51,7 @@
       <HintPath>..\3rdParty\System.Data.Entity.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Activation" />
@@ -72,6 +73,8 @@
     <Compile Include="Domain\Player.cs" />
     <Compile Include="Domain\Region.cs" />
     <Compile Include="Domain\Role.cs" />
+    <Compile Include="Helpers\STCacheHelper.cs" />
+    <Compile Include="Helpers\STHelper.cs" />
     <Compile Include="Security\CodeFirstCrypto.cs" />
     <Compile Include="Security\CodeFirstExtendedProvider.cs" />
     <Compile Include="Security\CodeFirstMembershipProvider.cs" />
@@ -80,6 +83,7 @@
     <Compile Include="Domain\Team.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\Navigation.cs" />
     <Compile Include="StatContext.cs" />
     <Compile Include="StatContextInitializer.cs" />
   </ItemGroup>
