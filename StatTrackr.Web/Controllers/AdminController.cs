@@ -23,6 +23,7 @@ namespace StatTrackr.Web.Controllers
 
             ViewBag.Title = "Admin Home";
             ViewBag.selectedPage = "admin";
+            ViewBag.NavigationItems = nav;
 
             return View();
         }
@@ -51,6 +52,8 @@ namespace StatTrackr.Web.Controllers
             Navigation nav = Navigation.GetByCurrentUser();
             ViewBag.Title = "Leagues";
             ViewBag.selectedPage = "leagues";
+            ViewBag.NavigationItems = nav;
+            
 
             return View();
         }
