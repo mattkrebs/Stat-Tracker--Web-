@@ -74,6 +74,7 @@
     <Compile Include="Domain\Region.cs" />
     <Compile Include="Domain\Role.cs" />
     <Compile Include="Helpers\STCacheHelper.cs" />
+    <Compile Include="Helpers\STConfig.cs" />
     <Compile Include="Helpers\STHelper.cs" />
     <Compile Include="Security\CodeFirstCrypto.cs" />
     <Compile Include="Security\CodeFirstExtendedProvider.cs" />
