@@ -14,7 +14,7 @@ namespace StatTrackr.Framework.Helpers
     {
 
         static readonly ObjectCache Cache = MemoryCache.Default;
-        static const string NavigationKeyString = "navigation";
+        static readonly string NavigationKeyString = "navigation";
 
         /*
          * Method to return an object from the Cache given a key.
