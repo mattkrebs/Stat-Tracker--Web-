@@ -55,6 +55,40 @@ namespace StatTrackr.Web.Controllers
             return JsonConvert.SerializeObject(model);
         }
 
+
+        public string SyncTeams(List<Team> teams, string token)
+        {
+            Guid ownerid = UserService.GetOwner(token).UserID;
+            TeamService db = new TeamService();
+       //     var model = new TeamService().GetAll(UserService.GetOwner(token).UserID);
+
+            foreach (var team in teams)
+            {
+                    
+                   
+                //no - add to 'clean' teams
+                Team cleanTeam = db.GetById(team.TeamID);
+                // check to see if team exists
+                if (cleanTeam != null)
+                {
+                    // yes - check to see if 'dirty' team updatetimestamp is > then 'clean' team updatetimestamp
+                    if (team.DateMotified > cleanTeam.DateMotified)
+                    {
+                        // yes - update
+                        db.Update(team, ownerid);
+                    }
+                    // no - ignore and leave alone
+                }
+                //no - add to 'clean' teams
+                else
+                {
+                    db.Create(team, ownerid);
+                }
+
+            }
+
+            return JsonConvert.SerializeObject(new TeamService().GetAll(ownerid));
+        }
        
 
     }
