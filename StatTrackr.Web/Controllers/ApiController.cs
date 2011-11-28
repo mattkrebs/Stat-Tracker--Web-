@@ -55,7 +55,7 @@ namespace StatTrackr.Web.Controllers
             return JsonConvert.SerializeObject(model);
         }
 
-
+        [HttpPost]
         public string SyncTeams(List<Team> teams, string token)
         {
             Guid ownerid = UserService.GetOwner(token).UserID;
