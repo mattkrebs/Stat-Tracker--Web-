@@ -58,6 +58,8 @@ namespace StatTrackr.Web.Controllers
         [HttpPost]
         public string SyncTeams(List<Team> teams, string token)
         {
+           
+
             Guid ownerid = UserService.GetOwner(token).UserID;
             TeamService db = new TeamService();
        //     var model = new TeamService().GetAll(UserService.GetOwner(token).UserID);

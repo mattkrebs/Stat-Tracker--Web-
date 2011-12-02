@@ -22,7 +22,11 @@ namespace StatTrackr.Framework.Domain
         [DataMember]
         [StringLength(255)]
         public string PhotoUrl { get; set; }
-        
+        //[StringLength(50)]
+        //public string Color { get; set; }
+        //[StringLength(50)]
+        //public string LogoUrl { get; set; }
+
         public virtual League League { get; set; }
         
         public virtual ICollection<Player> Players { get; set; }

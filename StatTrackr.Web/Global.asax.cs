@@ -33,7 +33,7 @@ namespace StatTrackr.Web
 
         protected void Application_Start()
         {
-            System.Data.Entity.Database.SetInitializer(new StatContextInitializer());
+            //System.Data.Entity.Database.SetInitializer(new StatContextInitializer());
 
             AreaRegistration.RegisterAllAreas();
 
