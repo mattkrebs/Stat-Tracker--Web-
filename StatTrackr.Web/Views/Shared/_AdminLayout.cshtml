@@ -52,23 +52,13 @@
                         </div>
                         <div class="right">
                             <ul id="toolbar">
-                                @if (StatTrackr.Framework.Security.CodeFirstSecurity.IsAuthenticated)
-                                {
-                                    <li><span>Logged in as</span>
-                                        <a class="user" href="/admin">@StatTrackr.Framework.Security.CodeFirstSecurity.CurrentUserName</a>
-                                        <a id="loginarrow" href="javascript:void(0);"></a>
-                                    </li>
-                                    <li><a id="messages" href="#">Messages</a></li>
-                                    <li><a id="settings" href="#">Settings</a></li>
-                                    <li><a id="search" href="#">Search</a></li>
-                                }
-                                else
-                                {
-                                    // html for logging in
-                                    <li>
-                                        <a id="login" href="/account/logon">Login</a>
-                                    </li>
-                                }
+                                <li><span>Logged in as</span>
+                                    <a class="user" href="/admin">@StatTrackr.Framework.Security.CodeFirstSecurity.CurrentUserName</a>
+                                    <a id="loginarrow" href="javascript:void(0);"></a>
+                                </li>
+                                <li><a id="messages" href="#">Messages</a></li>
+                                <li><a id="settings" href="#">Settings</a></li>
+                                <li><a id="search" href="#">Search</a></li>
                             </ul>
                             <div id="logindrop">
                                 <ul>
@@ -88,11 +78,26 @@
                     </select>
 
                     <ul class="sf-menu mobile-hide row clearfix">
-                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "home")><a href="/"><span>Home</span></a></li>
-                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "about")><a href="/home/about"><span>About Us</span></a></li>
-                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "features")><a href="/home/features"><span>Features</span></a></li>
-                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "apps")><a href="/home/apps"><span>Apps</span></a></li>
-                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "contact")><a href="/home/contact"><span>Contact Us</span></a></li>
+                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "admin")><a href="/admin"><span>Home</span></a></li>
+                        
+                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "leagues")>
+                            <a href="/admin/leagues"><span>Leagues</span></a>
+                            @MvcHtmlHelpers.HTMLHelpers.RenderNavigationDropdown(this.Html, ViewBag.NavigationItems, "leagues")
+                        </li>
+                        
+                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "divisions")>
+                            <a href="/admin/divisions"><span>Divisions</span></a>
+                            @MvcHtmlHelpers.HTMLHelpers.RenderNavigationDropdown(this.Html, ViewBag.NavigationItems, "divisions")
+                        </li>
+                        
+                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "teams")>
+                            <a href="/admin/teams"><span>Teams</span></a>
+                            @MvcHtmlHelpers.HTMLHelpers.RenderNavigationDropdown(this.Html, ViewBag.NavigationItems, "teams")
+                        </li>
+                        
+                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "players")><a href="/admin/players"><span>Players</span></a></li>
+                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "stats")><a href="/admin/stats"><span>Stats</span></a></li>
+                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "games")><a href="/admin/games"><span>Games</span></a></li>
                     </ul>
                 </nav>
                 <div id="titlediv">

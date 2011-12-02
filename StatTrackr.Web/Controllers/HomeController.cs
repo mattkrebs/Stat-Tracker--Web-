@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using StatTrackr.Core;
+using StatTrackr.Framework.Service;
 
 namespace StatTrackr.Web.Controllers
 {
@@ -32,7 +33,7 @@ namespace StatTrackr.Web.Controllers
 
         public ActionResult Features()
         {
-            ViewBag.Title = "Services";
+            ViewBag.Title = "Features";
             ViewBag.selectedPage = "features";
 
             return View();
