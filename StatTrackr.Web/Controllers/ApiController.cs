@@ -7,6 +7,7 @@ using StatTrackr.Core;
 using StatTrackr.Framework.Domain;
 using Newtonsoft.Json;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace StatTrackr.Web.Controllers
 {
@@ -58,19 +59,20 @@ namespace StatTrackr.Web.Controllers
         [HttpPost]
         public string SyncTeams(List<Team> teams, string token)
         {
-           
-
-            Guid ownerid = UserService.GetOwner(token).UserID;
-            TeamService db = new TeamService();
-       //     var model = new TeamService().GetAll(UserService.GetOwner(token).UserID);
-            if (teams != null)
+            Guid ownerid = new Guid();
+            try
             {
+                ownerid = ValidateToken(token);
+                TeamService db = new TeamService();
+                //     var model = new TeamService().GetAll(UserService.GetOwner(token).UserID);
+                if (teams != null)
+                {
+                    return TeamList(token);
+                }
                 foreach (var team in teams)
                 {
-
-
                     //no - add to 'clean' teams
-                    Team cleanTeam = db.GetById(team.TeamID);
+                    Team cleanTeam = db.GetById(team.TeamID, ownerid);
                     // check to see if team exists
                     if (cleanTeam != null)
                     {
@@ -87,13 +89,55 @@ namespace StatTrackr.Web.Controllers
                     {
                         db.Create(team, ownerid);
                     }
-
                 }
+               
+            }catch (SqlException ex){
+                return HandleException(ex, ErrorType.SqlException);
+            }catch (NullReferenceException ex){
+                return HandleException(ex, ErrorType.NullReferance);
             }
+             return JsonConvert.SerializeObject(new TeamService().GetAll(ownerid));
 
-            return JsonConvert.SerializeObject(new TeamService().GetAll(ownerid));
         }
-       
+
+        private string HandleException(Exception ex, ErrorType type)
+        {
+            
+            Dictionary<String, String> exception = new Dictionary<string, string>();
+            switch (type)
+            {
+                case ErrorType.NullReferance:
+                    exception.Add("errorCode", "Null Referance");
+                    break;
+                case ErrorType.Exception:
+                    exception.Add("errorCode", "Generic Exception");
+                    break;
+                case ErrorType.SqlException:
+                    exception.Add("errorCode", "Sql Exception");
+                    break;
+                default:
+                    break;
+            }
+            
+            exception.Add("errorText", ex.ToString());
+            return JsonConvert.SerializeObject(exception);
+        }
+
+        private Guid ValidateToken(string token)
+        {
+            Guid ownerid = UserService.GetOwner(token).UserID;
+            if (ownerid == null)
+                throw new NullReferenceException();
+
+                return ownerid;
+        }
+
+        enum ErrorType
+        {
+            NullReferance,
+            SqlException,
+            Exception
+        }
 
     }
 }

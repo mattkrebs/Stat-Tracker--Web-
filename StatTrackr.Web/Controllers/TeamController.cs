@@ -33,7 +33,7 @@ namespace StatTrackr.Web.Controllers
 
         public ActionResult QuickView(int id)
         {
-            return PartialView("QuickView", service.GetById(id));
+            return PartialView("QuickView", service.GetById(id, Guid.NewGuid()));
         }
 
         public ActionResult Create()

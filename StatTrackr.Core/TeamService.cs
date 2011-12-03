@@ -87,11 +87,11 @@ namespace StatTrackr.Core
         #region ICoreService<Team> Members
 
 
-        public Team GetById(int id)
+        public Team GetById(int id, Guid ownerId)
         {
             using (var ctx = new StatContext())
             {
-                return ctx.Teams.Include("Players").Where(x => x.TeamID == id).FirstOrDefault();
+                return ctx.Teams.Include("Players").Where(x => x.TeamID == id && x.Owner.UserID == ownerId).FirstOrDefault();
             }
         }
 

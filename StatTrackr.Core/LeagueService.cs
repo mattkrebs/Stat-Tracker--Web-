@@ -47,5 +47,14 @@ namespace StatTrackr.Core
         }
 
         #endregion
+
+        #region ICoreService<League> Members
+
+        public League GetById(int Id, Guid UserID)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }
