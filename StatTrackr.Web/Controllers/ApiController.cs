@@ -51,9 +51,27 @@ namespace StatTrackr.Web.Controllers
         [HttpPost]
         public string TeamList(string token)
         {
+            try
+            {
 
-            var model = new TeamService().GetAll(UserService.GetOwner(token).UserID);
-            return JsonConvert.SerializeObject(model);
+                Guid ownerid = ValidateToken(token);
+                var model = new TeamService().GetAll(ownerid);
+                return JsonConvert.SerializeObject(model);
+
+            }
+            catch (SqlException ex)
+            {
+                return HandleException(ex, ErrorType.SqlException);
+            }
+            catch (NullReferenceException ex)
+            {
+                return HandleException(ex, ErrorType.NullReferance);
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex, ErrorType.Exception);
+            }
+           
         }
 
         [HttpPost]
@@ -62,13 +80,14 @@ namespace StatTrackr.Web.Controllers
             Guid ownerid = new Guid();
             try
             {
-                ownerid = ValidateToken(token);
+                
                 TeamService db = new TeamService();
                 //     var model = new TeamService().GetAll(UserService.GetOwner(token).UserID);
-                if (teams != null)
+                if (teams == null)
                 {
                     return TeamList(token);
                 }
+                ownerid = ValidateToken(token);
                 foreach (var team in teams)
                 {
                     //no - add to 'clean' teams
@@ -95,6 +114,10 @@ namespace StatTrackr.Web.Controllers
                 return HandleException(ex, ErrorType.SqlException);
             }catch (NullReferenceException ex){
                 return HandleException(ex, ErrorType.NullReferance);
+            }
+            catch (Exception ex)
+            {
+                return HandleException(ex, ErrorType.Exception);
             }
              return JsonConvert.SerializeObject(new TeamService().GetAll(ownerid));
 
