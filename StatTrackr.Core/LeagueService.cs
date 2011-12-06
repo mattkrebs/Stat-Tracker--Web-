@@ -52,7 +52,10 @@ namespace StatTrackr.Core
 
         public League GetById(int Id, Guid UserID)
         {
-            throw new NotImplementedException();
+            using (var ctx = new StatContext())
+            {
+                return ctx.Leagues.Where(x => x.LeagueID == Id && x.Owner.UserID == UserID).FirstOrDefault();
+            }
         }
 
         #endregion

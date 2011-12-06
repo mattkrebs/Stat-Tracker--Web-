@@ -12,18 +12,24 @@ using Newtonsoft.Json;
 
 namespace StatTrackr.Web.Controllers
 {
+
+   
     [Authorize(Roles="Administrator")]
     public class TeamController : Controller
     {
+        Guid OwnerId = UserService.GetOwner(CodeFirstSecurity.CurrentUserId).UserID;
+
         //
+
         // GET: /Team/
         StatContext ctx = new StatContext();
         TeamService service = new TeamService();
         
-        public ActionResult Index(int id)
+        public ActionResult Index()
         {
-            Team team = ctx.Teams.Where(x => x.TeamID == id).FirstOrDefault();
-            return PartialView(team);
+
+            List<Team> teams = new TeamService().GetAll(OwnerId);
+            return View(teams);
         }
         public ActionResult List(int id)
         {
@@ -98,27 +104,44 @@ namespace StatTrackr.Web.Controllers
                 ctx.Entry(team).State = System.Data.EntityState.Modified;
                 ctx.SaveChanges();
             }
-            return View("Index", "League");
+            return View("Index", "Team");
         }
 
 
         public ActionResult Edit(int id)
         {
-            Team team = ctx.Teams.Find(id);
-           
-            return View(team);
+
+
+
+            Team team = new TeamService().GetById(id, OwnerId);
+            TeamModel tModel = new TeamModel()
+            {
+                TeamID = team.TeamID,
+                TeamName = team.TeamName,
+                PhotoUrl = team.PhotoUrl,
+                LeagueId = team.League.LeagueID
+            };
+
+            return View(tModel);
         }
 
         [HttpPost]
-        public ActionResult Edit(Team team)
+        public ActionResult Edit(TeamModel tModel)
         {
-
+            Team team = new TeamService().GetById(tModel.TeamID, OwnerId);
+            if (team != null)
+            {
+                team.TeamName = tModel.TeamName;
+                team.PhotoUrl = tModel.PhotoUrl;
+                team.League = new LeagueService().GetById(tModel.LeagueId, OwnerId);
+               
+            }
             if (ModelState.IsValid)
             {
                 ctx.Entry(team).State = System.Data.EntityState.Modified;
                 ctx.SaveChanges();
             }
-            return RedirectToAction("Index", "League");
+            return RedirectToAction("Index", "Team");
         }
         public ActionResult CreateLeaguePartial()
         {

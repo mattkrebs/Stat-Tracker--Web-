@@ -22,7 +22,7 @@ namespace StatTrackr.Core
         {
             using (var ctx = new StatContext())
             {
-                List<Team> teams = ctx.Teams.Where(x => x.Owner.UserID == OwnerId).ToList();
+                List<Team> teams = ctx.Teams.Include("League").Where(x => x.Owner.UserID == OwnerId).ToList();
                 return teams;
             }
         }
@@ -91,7 +91,7 @@ namespace StatTrackr.Core
         {
             using (var ctx = new StatContext())
             {
-                return ctx.Teams.Include("Players").Where(x => x.TeamID == id && x.Owner.UserID == ownerId).FirstOrDefault();
+                return ctx.Teams.Include("Players").Include("League").Where(x => x.TeamID == id && x.Owner.UserID == ownerId).FirstOrDefault();
             }
         }
 

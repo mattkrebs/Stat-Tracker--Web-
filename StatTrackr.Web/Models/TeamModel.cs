@@ -9,7 +9,7 @@ namespace StatTrackr.Web.Models
 {
     public class TeamModel
     {
-
+        public int TeamID { get; set; }
         public String TeamName { get; set; }
         public String PhotoUrl { get; set; }
        

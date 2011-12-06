@@ -1,40 +1,40 @@
-﻿@model List<StatTrackr.Framework.Domain.Team>
-<div id="teamlist">
-  <table class="roster">
-        <tr class="head">
-            <td>Team Name</td>
-            <td>Wins</td>
-            <td>Loses</td>
-            <td>Win %</td>
-        </tr>
-       <tr>
-        <td>Abe Froman</td>
-        <td>4</td>
-        <td>1</td>
-        <td>.750</td>
-        </tr>
-       <tr>
-        <td>Abe Froman</td>
-        <td>4</td>
-        <td>1</td>
-        <td>.750</td>
-        </tr>
-        <tr>
-        <td>Abe Froman</td>
-        <td>4</td>
-        <td>1</td>
-        <td>.750</td>
-        </tr>
-        <tr>
-        <td>Abe Froman</td>
-        <td>4</td>
-        <td>1</td>
-        <td>.750</td>
-        </tr>
-    </table>
-</div>
-<div id="teamdetail">
-
+﻿@model IList<StatTrackr.Framework.Domain.Team>
+<div class="widget clearfix">
+    <h2>
+        Teams</h2>
+    <div class="widget_inside">
+        <div class="col_12">
+            <table class="zebra">
+                <thead>
+                    <tr>
+                        <th>
+                        </th>
+                        <th class="align-left">
+                           Team Name
+                        </th>
+                        <th class="align-left">
+                            Current Record
+                        </th>
+                        <th class="align-left">
+                            League
+                        </th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td></td>
+                            <td>@Html.ActionLink(item.TeamName, "edit", new {id = item.TeamID})</td>
+                            <td>21-0</td>
+                            <td></td>
+                        </tr>
+                    }
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 <script type="text/javascript">
 
