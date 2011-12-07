@@ -8,74 +8,97 @@ using StatTrackr.Framework.Domain;
 using StatTrackr.Framework;
 using StatTrackr.Core;
 using StatTrackr.Framework.Security;
+using StatTrackr.Framework.Service;
 
 namespace StatTrackr.Web.Controllers
 {
    [Authorize(Roles = "Administrator")]
     public class LeagueController : Controller
     {
-        //All ctx calls should get replaced with Service calls from the StatTrackr.Core.
-        StatContext ctx = new StatContext();
+       User Owner = UserService.GetOwner(CodeFirstSecurity.CurrentUserId);
 
-        //
-        // GET: /League/
-        LeagueService league = new LeagueService();
+       protected override void Initialize(System.Web.Routing.RequestContext requestContext)
+       {
+           Navigation nav = Navigation.GetByCurrentUser();
 
-        public ActionResult Index()
-        {
-            return View(league.GetAll(CodeFirstSecurity.CurrentUserId));
-        }
-        public ActionResult Edit(int id)
-        {
-        
-            LeagueModel mLeague = new LeagueModel(ctx.Leagues.Find(id));
-      
-           
-            return PartialView("_EditLeague", mLeague);
-        }
-        [HttpPost]
-        public ActionResult Edit(LeagueModel mleague)
-        {
-            League league = ctx.Leagues.Find(mleague.LeagueID);
-            if (ModelState.IsValid)
-            {
-                league.Division = ctx.Divisions.Find(mleague.DivisionID);
-                league.DateMotified = DateTime.Now;
-                ctx.Entry(league).State = System.Data.EntityState.Modified;
-                ctx.SaveChanges();
-            }
+           ViewBag.Title = "Admin Home";
+           ViewBag.selectedPage = "admin";
+           ViewBag.NavigationItems = nav;
+           base.Initialize(requestContext);
+       }
 
-            return RedirectToAction("Index","League");
-        }
-        public ActionResult New()
-        {
-            return View(new League());
-        }
-        [HttpPost]
-        public ActionResult New(League league)
-        {
-            if (ModelState.IsValid){
-            
-                ctx.Leagues.Add(league);
-                ctx.SaveChanges();
-               
-             }
-             return RedirectToAction("Index");
-        }
 
-        public ActionResult CreateDivision()
-        {
-            return PartialView("_DivisionCreate");
-        }
-        [HttpPost]
-        public ActionResult CreateDivision(Division division)
-        {
-            if (ModelState.IsValid)
-            {
-                ctx.Divisions.Add(division);
-                ctx.SaveChanges();
-            }
-            return RedirectToAction("New","League");
-        }
+       public ActionResult Index()
+       {
+
+           List<League> teams = new List<League>();
+           using (StatContext ctx = new StatContext())
+           {
+               teams = ctx.Leagues.Include("Division").Where(x => x.Owner.UserID == Owner.UserID).ToList();
+           }
+           return View(teams);
+       }
+
+
+       public ActionResult Create()
+       {
+           return View("Create", new LeagueModel());
+       }
+       [HttpPost]
+       public ActionResult Create(LeagueModel model)
+       {
+           if (ModelState.IsValid)
+           {
+               using (StatContext ctx = new StatContext())
+               {
+                   League league = new League()
+                   {
+                       Name = model.Name,
+                       DateCreated = DateTime.Now,
+                       DateMotified = DateTime.Now,
+                       Owner = ctx.Users.Find(Owner.UserID),
+                       Division = ctx.Divisions.Find(model.DivisionID)
+                       
+                   };
+                   ctx.Entry(league).State = System.Data.EntityState.Added;
+                   ctx.SaveChanges();
+               }
+           }
+
+           return RedirectToAction("Index", "League");
+       }
+
+       public ActionResult Edit(int id)
+       {
+           LeagueModel model;
+           using (StatContext ctx = new StatContext())
+           {
+               League league = ctx.Leagues.Where(x => x.LeagueID == id && x.Owner.UserID == Owner.UserID).FirstOrDefault();
+               model = new LeagueModel(league);
+           }
+
+
+           return View(model);
+       }
+
+       [HttpPost]
+       public ActionResult Edit(LeagueModel model)
+       {
+
+           using (StatContext context = new StatContext())
+           {
+               League league = context.Leagues.Where(x => x.LeagueID == model.LeagueID && x.Owner.UserID == Owner.UserID).FirstOrDefault();
+               league.Name = model.Name;
+               league.DateMotified = DateTime.Now;
+               if (model.DivisionID != null)
+               {
+                   league.Division = context.Divisions.Find(model.DivisionID);
+               }
+               context.Entry(league).State = System.Data.EntityState.Modified;
+               context.SaveChanges();
+           }
+
+           return RedirectToAction("Index", "League");
+       }
     }
 }

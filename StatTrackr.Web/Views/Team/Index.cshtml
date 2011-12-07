@@ -38,7 +38,7 @@
                             <td>21-0</td>
                             @if (item.League != null)
                             {
-                            <td>@Html.ActionLink(item.League.Name, "edit", "league", new { id = item.TeamID }, null)</td>
+                            <td>@Html.ActionLink(item.League.Name, "edit", "league", new { id = item.League.LeagueID }, null)</td>
                             }
                             else
                             {

@@ -1,0 +1,49 @@
+﻿@model StatTrackr.Web.Models.LeagueModel
+@{
+    ViewBag.Title = "Edit";
+}
+<div class="row">
+    <div class="widget clearfix">
+        <h2>
+            Create Leauge</h2>
+        <div class="widget_inside">
+            <div class="col_12">
+                <div class="col_4">
+                    <h3>New League</h3>
+                    <p>
+                        Create your League. Once created go to teams to attach them to this league.
+                    </p>
+                </div>
+                <div class="col_8 last">
+                    <div class="form">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(model => model.LeagueID)
+                            <div class="clearfix">
+                                @Html.LabelFor(model => model.Name)
+                                <div class="input">
+                                    @Html.TextBoxFor(model => model.Name)
+                                    @Html.ValidationMessageFor(model => model.Name, null, new { @class = "help" })
+                                </div>
+                            </div>
+                         
+                            <div class="clearfix">
+                                <label>Division</label>
+                                <div class="input">
+                                    @Html.DropDownListFor(model => model.DivisionID, new SelectList(StatTrackr.Web.Models.StatHelper.GetAllDivisions(), "DivisionID", "Name"), "----- Select Division-----")
+                                </div>
+                            </div>
+                            <div class="clearfix grey-highlight">
+                                <div class="input no-label">
+                                    <input class="button blue" type="submit" value="Submit">
+                                    <input class="button grey" type="reset" value="Reset">
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

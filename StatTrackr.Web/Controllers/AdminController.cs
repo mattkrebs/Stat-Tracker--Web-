@@ -11,6 +11,7 @@ namespace StatTrackr.Web.Controllers
     {
         //
         // GET: /Admin/
+        
 
         public ActionResult Index()
         {

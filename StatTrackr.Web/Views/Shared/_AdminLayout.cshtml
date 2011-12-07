@@ -78,26 +78,26 @@
                     </select>
 
                     <ul class="sf-menu mobile-hide row clearfix">
-                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "admin")><a href="/admin"><span>Home</span></a></li>
+                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "")><a href="/"><span>Home</span></a></li>
                         
-                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "leagues")>
-                            <a href="/admin/leagues"><span>Leagues</span></a>
+                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "league")>
+                            <a href="/league/"><span>Leagues</span></a>
                             @MvcHtmlHelpers.HTMLHelpers.RenderNavigationDropdown(this.Html, ViewBag.NavigationItems, "leagues")
                         </li>
                         
-                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "divisions")>
-                            <a href="/admin/divisions"><span>Divisions</span></a>
+                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "division")>
+                            <a href="/division/"><span>Divisions</span></a>
                             @MvcHtmlHelpers.HTMLHelpers.RenderNavigationDropdown(this.Html, ViewBag.NavigationItems, "divisions")
                         </li>
                         
-                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "teams")>
-                            <a href="/admin/teams"><span>Teams</span></a>
+                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "team")>
+                            <a href="/team/"><span>Teams</span></a>
                             @MvcHtmlHelpers.HTMLHelpers.RenderNavigationDropdown(this.Html, ViewBag.NavigationItems, "teams")
                         </li>
                         
-                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "players")><a href="/admin/players"><span>Players</span></a></li>
-                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "stats")><a href="/admin/stats"><span>Stats</span></a></li>
-                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "games")><a href="/admin/games"><span>Games</span></a></li>
+                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "players")><a href="/players"><span>Players</span></a></li>
+                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "stats")><a href="/stats"><span>Stats</span></a></li>
+                        <li @MvcHtmlHelpers.HTMLHelpers.SelectedNavItem(this.Html, ViewBag.selectedPage, "games")><a href="/games"><span>Games</span></a></li>
                     </ul>
                 </nav>
                 <div id="titlediv">

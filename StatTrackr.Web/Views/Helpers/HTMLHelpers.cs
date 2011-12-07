@@ -57,7 +57,7 @@ namespace MvcHtmlHelpers
 
                 foreach (Team t in teams)
                 {
-                    rtnString += "<li><a href=\"/team/" + t.TeamID + "\">" + t.TeamName + "</a></li>";
+                    rtnString += "<li><a href=\"/team/edit/" + t.TeamID + "\">" + t.TeamName + "</a></li>";
                 }
 
                 rtnString += "</ul>";
@@ -76,7 +76,7 @@ namespace MvcHtmlHelpers
 
                 foreach (Division d in divisions)
                 {
-                    rtnString += "<li><a href=\"/admin/division/" + d.DivisionID + "\">" + d.Name + "</a></li>";
+                    rtnString += "<li><a href=\"/division/edit/" + d.DivisionID + "\">" + d.Name + "</a></li>";
                 }
 
                 rtnString += "</ul>";
@@ -95,7 +95,7 @@ namespace MvcHtmlHelpers
 
                 foreach (League l in leagues)
                 {
-                    rtnString += "<li><a href=\"/admin/league/" + l.LeagueID + "\">" + l.Name + "</a></li>";
+                    rtnString += "<li><a href=\"/league/edit/" + l.LeagueID + "\">" + l.Name + "</a></li>";
                 }
 
                 rtnString += "</ul>";

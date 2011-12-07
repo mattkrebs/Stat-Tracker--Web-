@@ -17,7 +17,9 @@ namespace StatTrackr.Web.Models
      
         public LeagueModel(League league) {
             this.Name = league.Name;
-            this.LeagueID = league.LeagueID;
+            if (league.Name != null)
+                this.LeagueID = league.LeagueID;
+
             if (league.Division != null)
                 this.DivisionID = league.Division.DivisionID;
         }

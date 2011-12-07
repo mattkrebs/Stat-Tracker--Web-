@@ -9,6 +9,7 @@ using StatTrackr.Framework.Domain;
 using StatTrackr.Core;
 using StatTrackr.Framework.Security;
 using Newtonsoft.Json;
+using StatTrackr.Framework.Service;
 
 namespace StatTrackr.Web.Controllers
 {
@@ -17,7 +18,21 @@ namespace StatTrackr.Web.Controllers
     [Authorize(Roles="Administrator")]
     public class TeamController : Controller
     {
-        Guid OwnerId = UserService.GetOwner(CodeFirstSecurity.CurrentUserId).UserID;        
+
+
+        Guid OwnerId = UserService.GetOwner(CodeFirstSecurity.CurrentUserId).UserID;
+
+        protected override void Initialize(System.Web.Routing.RequestContext requestContext)
+        {
+            Navigation nav = Navigation.GetByCurrentUser();
+
+            ViewBag.Title = "Admin Home";
+            ViewBag.selectedPage = "";
+            ViewBag.NavigationItems = nav;
+            base.Initialize(requestContext);
+        }
+
+
         public ActionResult Index()
         {
 
