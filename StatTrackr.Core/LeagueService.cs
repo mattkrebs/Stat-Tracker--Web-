@@ -54,7 +54,7 @@ namespace StatTrackr.Core
         {
             using (var ctx = new StatContext())
             {
-                return ctx.Leagues.Where(x => x.LeagueID == Id && x.Owner.UserID == UserID).FirstOrDefault();
+                return ctx.Leagues.Include("Teams").Where(x => x.LeagueID == Id && x.Owner.UserID == UserID).FirstOrDefault();
             }
         }
 

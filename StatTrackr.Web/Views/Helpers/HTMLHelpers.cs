@@ -57,7 +57,7 @@ namespace MvcHtmlHelpers
 
                 foreach (Team t in teams)
                 {
-                    rtnString += "<li><a href=\"/admin/teams/" + t.TeamID + "\">" + t.TeamName + "</a></li>";
+                    rtnString += "<li><a href=\"/team/" + t.TeamID + "\">" + t.TeamName + "</a></li>";
                 }
 
                 rtnString += "</ul>";

@@ -15,5 +15,20 @@ namespace StatTrackr.Web.Models
        
         public int LeagueId { get; set; }
 
+
+
+        public TeamModel(Team team)
+        {
+            if (team.TeamName != null)
+                this.TeamID = team.TeamID;
+
+            this.TeamName = team.TeamName;
+            this.PhotoUrl = team.PhotoUrl;
+
+            if(team.League != null)
+                this.LeagueId = team.League.LeagueID;
+        }
+
+        public TeamModel() { }
     }
 }

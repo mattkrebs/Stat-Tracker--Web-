@@ -1,69 +1,56 @@
 ﻿@model StatTrackr.Web.Models.TeamModel
-
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
 }
-
-<h2>Create</h2>
-<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery-ui-1.8.14.custom.min.js")" type="text/javascript"></script>
-
-@using (Html.BeginForm()) {
-    @Html.ValidationSummary(true)
-        <div class="editor-label">
-            @Html.LabelFor(model => model.TeamName)
+<div class="row">
+    <div class="widget clearfix">
+        <h2>
+            Create Team</h2>
+        <div class="widget_inside">
+            <div class="col_12">
+                <div class="col_4">
+                    <h3>New Team</h3>
+                    <p>
+                        Create your team. No images with be hosted with us. Please provide a full url for
+                        you team image. ie http://www.domain.com/images/myimage.jpg"
+                    </p>
+                </div>
+                <div class="col_8 last">
+                    <div class="form">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(model => model.TeamID)
+                            <div class="clearfix">
+                                @Html.LabelFor(model => model.TeamName)
+                                <div class="input">
+                                    @Html.TextBoxFor(model => model.TeamName)
+                                    @Html.ValidationMessageFor(model => model.TeamName, null, new { @class = "help" })
+                                </div>
+                            </div>
+                            <div class="clearfix">
+                                @Html.LabelFor(model => model.PhotoUrl)
+                                <div class="input">
+                                    @Html.TextBoxFor(model => model.PhotoUrl, new { @class = "xxlarge" })
+                                    @Html.ValidationMessageFor(model => model.TeamName, null, new { @class = "help" })
+                                </div>
+                            </div>
+                                <div class="clearfix">
+                                <label>League</label>
+                                <div class="input">
+                                    @Html.DropDownListFor(model => model.LeagueId, new SelectList(StatTrackr.Web.Models.StatHelper.GetAllLeagues(), "LeagueID", "Name"), "----- Select League-----")
+                                </div>
+                            </div>
+                            <div class="clearfix grey-highlight">
+                                <div class="input no-label">
+                                    <input class="button blue" type="submit" value="Submit">
+                                    <input class="button grey" type="reset" value="Reset">
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.TeamName)
-            @Html.ValidationMessageFor(model => model.TeamName)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.PhotoUrl)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.PhotoUrl)
-            @Html.ValidationMessageFor(model => model.PhotoUrl)
-        </div>
-         <div class="editor-field">
-         @if (Model.League == null)
-         {
-            @Html.DropDownListFor(model => model.LeagueId, new SelectList(StatTrackr.Web.Models.StatHelper.GetAllLeagues(), "LeagueID", "Name"), "----- Select League-----")
-         }
-            <div id="my-button">Create New Leauge</div>
-        </div>
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+    </div>
 </div>
-<script type="text/javascript">
-    $(function () {
-        $('#dialog').dialog({
-            autoOpen: false,
-            width: 400,
-            resizable: false,
-            title: 'New League',
-            modal: true,
-            open: function(event, ui) {
-                //Load the CreateAlbumPartial action which will return 
-                // the partial view _CreateAlbumPartial
-                $(this).load("@Url.Action("CreateLeaguePartial", "Team")");
-            },
-            buttons: {
-                "Close": function () {
-                    $(this).dialog("close");
-                }
-            }
-        });
-
-        $('#my-button').click(function () {
-            $('#dialog').dialog('open');
-        });
-    });
-</script>
-<div id="dialog" title="Create League" style="overflow: hidden;">

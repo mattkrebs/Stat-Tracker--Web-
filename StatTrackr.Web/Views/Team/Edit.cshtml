@@ -4,8 +4,7 @@
 }
 <div class="row">
     <div class="widget clearfix">
-        <h2>
-            Edit @Model.TeamName</h2>
+        <h2>Team Edit</h2>
         <div class="widget_inside">
             <div class="col_12">
                 <div class="col_4">
@@ -33,6 +32,9 @@
                                 <div class="input">
                                     @Html.TextBoxFor(model => model.PhotoUrl, new { @class = "xxlarge" })
                                     @Html.ValidationMessageFor(model => model.TeamName, null, new { @class = "help" })
+                                </div>
+                                <div class="photo">
+                                    <img src="@Model.PhotoUrl" alt="@Model.TeamName" width="300px" />
                                 </div>
                             </div>
                                 <div class="clearfix">

@@ -140,6 +140,8 @@ h3 {font-size: 1.667em; color: #000; padding-bottom: 5px; font-weight: bold;}
 
 .widget {background: #fbfbfb; padding: 20px 0; box-shadow: 0 1px 2px #858585}
 
+.widget_action {float:right; padding:0 20px 20px 0;}
+
 h2 {
     background: #f8f8f8;
     background: -moz-linear-gradient(top, #f8f8f8 0%, #f3f3f3 100%);
@@ -512,3 +514,9 @@ footer {background: #ddd; padding-top: 20px}
 
 #aurora_option select {padding: 0; }
 #aurora_option label {padding-top: 5px; color: #929292}
+
+
+
+/*----- Editor Extra Styles ------ */
+
+.photo {padding:20px; float:right;}
